@@ -1,2 +1,2 @@
-# CS8803-PGM
-CS8803 Special Topics - Probabilistic Graphical Models (Graduate course @ Georgia Tech)
+# graphical-models-ml
+Course material for CS8803: Graphical Models in ML (Graduate Course) at Georgia Tech
