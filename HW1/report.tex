@@ -335,5 +335,43 @@ $= \frac{P(x_1, x_2, x_5)P(x_2, x_4, x_5)P(x_2, x_3, x_4)}{P(x_2, x_5)P(x_2, x_4
 
 The probability distribution can then be written as:
 
-$P(x_1, x_2, x_3, x_4, x_5) = \frac{\phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_5, x_1)}{\sum_{x_1, x_2, x_3, x_4, x_5} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_5, x_1)}$
+$P(x_1, x_2, x_3, x_4, x_5) = \frac{\phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)}{\sum_{x_1, x_2, x_3, x_4, x_5} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)}$
+
+We will try to reach this above factorization by marginalizing each distribution term in the numerator and denominator of the following joint distribution given to us:
+
+$P(x_1, x_2, x_3, x_4, x_5) = \frac{P(x_1, x_2, x_5)P(x_2, x_4, x_5)P(x_2, x_3, x_4)}{P(x_2, x_5)P(x_2, x_4)}$
+
+We know the following factorizations of the marginal distributions exist below:
+
+$P(x_1, x_2, x_5) = \frac{\phi(x_1, x_2)\phi(x_2, x_5)\phi(x_1, x_5)}{\sum_{x_1, x_2, x_5} \phi(x_1, x_2)\phi(x_2, x_5)\phi(x_1, x_5)}$
+
+$P(x_2, x_4, x_5) = \frac{\phi(x_2, x_4)\phi(x_4, x_5)\phi(x_2, x_5)}{\sum_{x_2, x_4, x_5} \phi(x_2, x_4)\phi(x_4, x_5)\phi(x_2, x_5)}$
+
+$P(x_2, x_3, x_4) = \frac{\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_2, x_4)}{\sum_{x_2, x_3, x_4} \phi(x_2, x_3)\phi(x_3, x_4)\phi(x_2, x_4)}$
+
+$P(x_2, x_5) = \frac{\phi(x_2, x_5)}{\sum_{x_2, x_5} \phi(x_2, x_5)}$
+
+$P(x_2, x_4) = \frac{\phi(x_2, x_4)}{\sum_{x_2, x_4} \phi(x_2, x_4)}$
+
+So, when we combine them, we get the following:
+
+$P(x_1, x_2, x_3, x_4, x_5)$
+
+$= \frac{P(x_1, x_2, x_5)P(x_2, x_4, x_5)P(x_2, x_3, x_4)}{P(x_2, x_5)P(x_2, x_4)}$
+
+$= \frac{\phi(x_1, x_2)\phi(x_2, x_5)\phi(x_1, x_5)\phi(x_2, x_4)\phi(x_4, x_5)\phi(x_2, x_5)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_2, x_4)\sum_{x_2, x_4} \phi(x_2, x_4) \sum_{x_2, x_5} \phi(x_2, x_5)}{\phi(x_2, x_4)\phi(x_2, x_5)\sum_{x_1, x_2, x_3, x_4, x_5} \phi(x_1, x_2)\phi(x_2, x_5)\phi(x_1, x_5)\phi(x_2, x_4)\phi(x_4, x_5)\phi(x_2, x_5)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_2, x_4)}$
+
+We cancel out $\phi(x_2, x_4)$, $\phi(x_2, x_5)$, $\sum_{x_2, x_4} \phi(x_2, x_4)$, and $\sum_{x_2, x_5} \phi(x_2, x_5)$ from both the numerator and denominator:
+
+$= \frac{\phi(x_1, x_2)\phi(x_1, x_5)\phi(x_4, x_5)\phi(x_2, x_5)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_2, x_4)}{\sum_{x_1, x_2, x_3, x_4, x_5} \phi(x_1, x_2)\phi(x_1, x_5)\phi(x_4, x_5)\phi(x_2, x_5)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_2, x_4)}$
+
+Then, we can rearrange the factors to make them more visibly appealing:
+
+$= \frac{\phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)\phi(x_2, x_5)\phi(x_2, x_4)}{\sum_{x_1, x_2, x_3, x_4, x_5} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)\phi(x_2, x_5)\phi(x_2, x_4)}$
+
+And finally, since the edges $(x_2, x_4)$ and $(x_2, x_5)$ do not exist, those edge potentials, $\phi(x_2, x_5)$ and $\phi(x_2, x_4)$, both equal 1, so they can be removed from the numerator and denominator, giving us our final factorized form of the joint probability, shown above, based on the individual marginal probability distributions:
+
+$= \frac{\phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)}{\sum_{x_1, x_2, x_3, x_4, x_5} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)}$
+
+So, by combining the individual factorizations of each marginal probability distribution term in the numerator and denominator of the given equation, we can see it equals the complete pairwise potential factorization of the entire joint distribution of the markov network.
 \end{document}
