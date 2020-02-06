@@ -172,14 +172,16 @@ Because of $\text{sep}_H(X; Y \vert Z)$, there is no active trail between any no
 By the definition of an active trail in a Markov network, it must satisfy one condition: (1) for all nodes in the trail, no node exists in Z. Since all trails are inactive, they all break this condition. There are three necessary cases to show:
 
 \begin{enumerate}
-	\item A V structure exists in G (moralized parents in H): Two parents ($m_{i-1}, m_{i+1}$) in a V structure $m_{i-1} \rightarrow m_j \leftarrow m_{i+1}$ are moralized in H. This means $m_j\in Z$ or $\text{Desc}(m_j)\in Z$, so this V structure is active in G. As such, the moralized parents create a mini active trail in H ($m_{i-1}$ --- $m_{i+1}$), following the precedent that that V structure is active in G due to the presence of an observed $m_j$ or descendant of $m_j$. So, these moralized parents, which produce an active trail in H, represent an active trail in G.
-	\item A V structure exists in G (non-moralized parents in H): Two parents ($m_{i-1}, m_{i+1}$) in a V structure $m_{i-1} \rightarrow m_j \leftarrow m_{i+1}$ are non-moralized in H. If the two parents are not moralized, then $m_j, \text{Desc}(m_j)\notin Z$, which means that V structure is not active in G, or else $m_j$ or Desc($m_j$) would be in $U \cup \text{Ancestors}_U = H$. So, there is no direct path in H between the parents ($m_{i-1}$ --- $m_{i+1}$), which as shown above, implies that V structure is inactive in G. This indicates this inactive path is inactive in G.
-	\item A causal/evidential trail or common cause exists in G: $m_i\in Z$ exists on a trail $T \in H$, so $T$ is inactive in G due to the definition of a casual/evidential trail or common cause.
+	\item Moralized parents in H (corresponding to an existing V structure in G): Two parents ($m_{i-1}, m_{i+1}$) in a V structure $m_{i-1} \rightarrow m_j \leftarrow m_{i+1}$ are moralized in H. Since the parents are moralized, this means $m_j\in Z$ or $\text{Desc}(m_j)\in Z$, so this V structure is active in G. As such, the moralized parents create a mini active trail in H (i.e. $m_{i-1}$ --- $m_{i+1}$ exists), following the precedent that that V structure is active in G due to the presence of an observed $m_j$ or descendant of $m_j$. So, these moralized parents, which produce an active trail in H, represent an active trail in G. (i.e. every active path involving moralized parents in H indicates an active V-structure in G)
+	\item Non-moralized parents in H (corresponding to an existing V structure in G): Two parents ($m_{i-1}, m_{i+1}$) in a V structure $m_{i-1} \rightarrow m_j \leftarrow m_{i+1}$ are non-moralized in H. Since the two parents are not moralized, this means $m_j, \text{Desc}(m_j)\notin Z$, which means that V structure is not active in G (otherwise, $m_j$ or Desc($m_j$) would be observed, which means it is active V-structure in G AND they would be in $U \cup \text{Ancestors}_U = H$). So, since $m_j, \text{Desc}(m_j)\notin Z$, there is no direct path in H between the parents \\(i.e. $m_{i-1}$ --- $m_{i+1}$ does not exist), which as shown above, implies that V structure is inactive in G. This indicates this inactive path is inactive in G. (i.e. every pair of non-moralized parents in H indicates an inactive V-structure in G)
+	\item Three-node trail (corresponding to a causal/evidential trail or common cause in G): $m_i\in Z$ exists on a trail $T \in H$ (i.e. $T$ is inactive in H), so $T$ is inactive in G due to the definition of a casual/evidential trail or common cause. Similarly, if $m_i\notin Z$, then that three-node trail is active, similarly to how it would be in G. (i.e. every inactive three-node trail in H indicates an inactive three-node trail in G)
 \end{enumerate}
+
+From the three cases above, we can see moralized parents in H create an active mini-trail between two parents of a V-structure and indicates an active V-structure in G, non-moralized parents in H does not create a mini-trail between two parents of a V-structure and indicates an inactive V-structure in G, and an inactive three-node trail in H indicates an inactive three-node trail (causal/evidential trail or common cause) in G.
 
 $\therefore$ We have shown $\text{sep}_H(X; Y \vert Z) \implies \text{d-sep}_G(X; Y \vert Z)$.
 
-$\therefore$ We have shown both directions and $\text{d-sep}_G(X; Y \vert Z)$ iff $\text{sep}_H(X; Y \vert Z)$.
+$\therefore$ We have shown both directions and $\text{d-sep}_G(X; Y \vert Z)$ iff $\text{sep}_H(X; Y \vert Z). \quad\qed$
 
 \pagebreak\textbf{Problem 2.4}
 
@@ -343,35 +345,39 @@ $P(x_1, x_2, x_3, x_4, x_5) = \frac{P(x_1, x_2, x_5)P(x_2, x_4, x_5)P(x_2, x_3, 
 
 We know the following factorizations of the marginal distributions exist below:
 
-$P(x_1, x_2, x_5) = \frac{\phi(x_1, x_2)\phi(x_2, x_5)\phi(x_1, x_5)}{\sum_{x_1, x_2, x_5} \phi(x_1, x_2)\phi(x_2, x_5)\phi(x_1, x_5)}$
+Let $Z = \sum_{x_1, x_2, x_3, x_4, x_5} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)$
 
-$P(x_2, x_4, x_5) = \frac{\phi(x_2, x_4)\phi(x_4, x_5)\phi(x_2, x_5)}{\sum_{x_2, x_4, x_5} \phi(x_2, x_4)\phi(x_4, x_5)\phi(x_2, x_5)}$
+$P(x_1, x_2, x_5) = \frac{\sum_{x_3, x_4} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)}{Z}$
 
-$P(x_2, x_3, x_4) = \frac{\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_2, x_4)}{\sum_{x_2, x_3, x_4} \phi(x_2, x_3)\phi(x_3, x_4)\phi(x_2, x_4)}$
+$P(x_2, x_4, x_5) = \frac{\sum_{x_1, x_3} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)}{Z}$
 
-$P(x_2, x_5) = \frac{\phi(x_2, x_5)}{\sum_{x_2, x_5} \phi(x_2, x_5)}$
+$P(x_2, x_3, x_4) = \frac{\sum_{x_1, x_5} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)}{Z}$
 
-$P(x_2, x_4) = \frac{\phi(x_2, x_4)}{\sum_{x_2, x_4} \phi(x_2, x_4)}$
+$P(x_2, x_5) = \frac{\sum_{x_1, x_3, x_4} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)}{Z}$
 
-So, when we combine them, we get the following:
+$P(x_2, x_4) = \frac{\sum_{x_1, x_3, x_5} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)}{Z}$
+
+Then we can combine them such that:
 
 $P(x_1, x_2, x_3, x_4, x_5)$
 
 $= \frac{P(x_1, x_2, x_5)P(x_2, x_4, x_5)P(x_2, x_3, x_4)}{P(x_2, x_5)P(x_2, x_4)}$
 
-$= \frac{\phi(x_1, x_2)\phi(x_2, x_5)\phi(x_1, x_5)\phi(x_2, x_4)\phi(x_4, x_5)\phi(x_2, x_5)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_2, x_4)\sum_{x_2, x_4} \phi(x_2, x_4) \sum_{x_2, x_5} \phi(x_2, x_5)}{\phi(x_2, x_4)\phi(x_2, x_5)\sum_{x_1, x_2, x_3, x_4, x_5} \phi(x_1, x_2)\phi(x_2, x_5)\phi(x_1, x_5)\phi(x_2, x_4)\phi(x_4, x_5)\phi(x_2, x_5)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_2, x_4)}$
+\tiny$= \frac{\frac{1}{Z}\sum_{x_3, x_4} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)\frac{1}{Z}\sum_{x_1, x_3} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)\frac{1}{Z}\sum_{x_1, x_5} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)}{\frac{1}{Z}\sum_{x_1, x_3, x_4} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)\frac{1}{Z}\sum_{x_1, x_3, x_5} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)}$
 
-We cancel out $\phi(x_2, x_4)$, $\phi(x_2, x_5)$, $\sum_{x_2, x_4} \phi(x_2, x_4)$, and $\sum_{x_2, x_5} \phi(x_2, x_5)$ from both the numerator and denominator:
+\tiny$= \frac{\frac{1}{Z}\sum_{x_3, x_4} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)\sum_{x_1, x_3} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)\sum_{x_1, x_5} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)}{\sum_{x_1, x_3, x_4} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)\sum_{x_1, x_3, x_5} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)}$
 
-$= \frac{\phi(x_1, x_2)\phi(x_1, x_5)\phi(x_4, x_5)\phi(x_2, x_5)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_2, x_4)}{\sum_{x_1, x_2, x_3, x_4, x_5} \phi(x_1, x_2)\phi(x_1, x_5)\phi(x_4, x_5)\phi(x_2, x_5)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_2, x_4)}$
+\tiny$= \frac{\frac{1}{Z}\phi(x_1, x_2)\phi(x_1, x_5)\phi(x_4, x_5)\phi(x_2, x_3)\phi(x_3, x_4)\sum_{x_3, x_4} \phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\sum_{x_1, x_3} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_1, x_5)\sum_{x_1, x_5} \phi(x_1, x_2)\phi(x_4, x_5)\phi(x_1, x_5)}{\sum_{x_1, x_3, x_4} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)\sum_{x_1, x_3, x_5} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)}$
 
-Then, we can rearrange the factors to make them more visibly appealing:
+\small$= \frac{\frac{1}{Z}\phi(x_1, x_2)\phi(x_1, x_5)\phi(x_4, x_5)\phi(x_2, x_3)\phi(x_3, x_4)\sum_{x_1, x_3} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_1, x_5)}{\sum_{x_1, x_3, x_4} \phi(x_1, x_2)\phi(x_1, x_5)\sum_{x_1, x_3, x_5} \phi(x_2, x_3)\phi(x_3, x_4)}$
 
-$= \frac{\phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)\phi(x_2, x_5)\phi(x_2, x_4)}{\sum_{x_1, x_2, x_3, x_4, x_5} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)\phi(x_2, x_5)\phi(x_2, x_4)}$
+$= \frac{\frac{1}{Z}\phi(x_1, x_2)\phi(x_1, x_5)\phi(x_4, x_5)\phi(x_2, x_3)\phi(x_3, x_4)\sum_{x_1, x_3} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_1, x_5)}{\sum_{x_1} \phi(x_1, x_2)\phi(x_1, x_5)\sum_{x_3} \phi(x_2, x_3)\phi(x_3, x_4)}$
 
-And finally, since the edges $(x_2, x_4)$ and $(x_2, x_5)$ do not exist, those edge potentials, $\phi(x_2, x_5)$ and $\phi(x_2, x_4)$, both equal 1, so they can be removed from the numerator and denominator, giving us our final factorized form of the joint probability, shown above, based on the individual marginal probability distributions:
+$= \frac{\frac{1}{Z}\phi(x_1, x_2)\phi(x_1, x_5)\phi(x_4, x_5)\phi(x_2, x_3)\phi(x_3, x_4)\sum_{x_1, x_3} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_1, x_5)}{\sum_{x_1, x_3} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_1, x_5)}$
+
+$= \frac{1}{Z}\phi(x_1, x_2)\phi(x_1, x_5)\phi(x_4, x_5)\phi(x_2, x_3)\phi(x_3, x_4)$
 
 $= \frac{\phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)}{\sum_{x_1, x_2, x_3, x_4, x_5} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_5)\phi(x_1, x_5)}$
 
-So, by combining the individual factorizations of each marginal probability distribution term in the numerator and denominator of the given equation, we can see it equals the complete pairwise potential factorization of the entire joint distribution of the markov network.
+Which is the complete factorization of the joint distribution above based on the pairwise potentials. So, we have shown the second half of the question (i.e. express the marginal probability tables explicitly as functions of the pairwise potentials).
 \end{document}
