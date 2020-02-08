@@ -185,27 +185,11 @@ $\therefore$ We have shown both directions and $\text{d-sep}_G(X; Y \vert Z)$ if
 
 \pagebreak\textbf{Problem 2.4}
 
-The joint distribution for the non-marginalized bayesian network is as follows:
+Once Alarm is removed, we need to make sure we preserve the independencies between its parents (Burglary and Earthquake) and Alarm's children, so those edges need to be added to the graph.
 
-P(B, E, T, N, J, M, A) = P(B)P(E)P(T)P(N)P(A $\vert$ B, E)P(J $\vert$ A, T)P(M $\vert$ A, N)
+Additionally, in the original graph, the children of Alarm were all dependent on each other because they could form a trail passing through Alarm, so we need to make sure we include those independencies between the children.
 
-We want to calculate the marginalized distribution P(B, E, T, N, J, M).
-
-(*) Since we are marginalizing over A, we know P(A $\vert$ B, E) = 1.
-
-Now, we know, a marginalized joint distribution over some variable $x_n$ means $P(x_1, \dots, x_n) = P(x_1, \dots, x_{n-1})$. Using this rule, we can infer the following:
-
-(@) $P(J \vert A, T) = \frac{P(J, A, T)}{P(A, T)} = \frac{P(J, T)}{P(T)} = P(J \vert T)$
-
-(\#) $P(M \vert A, N) = \frac{P(M, A, N)}{P(A, N)} = \frac{P(M, N)}{P(N)} = P(M \vert N)$
-
-As such, using (*), (@), and (\#), we can reduce the joint distribution to the marginalized distribution to get:
-
-P(B, E, T, N, J, M) = P(B)P(E)P(T)P(N)P(J $\vert$ T)P(M $\vert$ N)
-
-So, with this new joint distribution after marginalizing over A (Alarm) in the original joint distribution, we can see the only dependencies are (J, T) and (M, N). The resultant bayesian network showing this minimal I-map is as follows:
-
-\includegraphics[scale=0.2]{q2-sub3}
+\includegraphics[scale=0.2]{q2-sub4}
 
 \pagebreak\textbf{Problem 2.5}
 
