@@ -9,7 +9,7 @@ symptoms = zeros(7, 16, 2);
 
 for i = 1:4000000
     if mod(i, 100000) == 0
-        fprintf("Iteration %d done...", i);
+        fprintf("Iteration %d done...\n", i);
     end
     
     assignments = de2bi(dataset(i), 12);

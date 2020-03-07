@@ -17,7 +17,25 @@ end
 newSymptoms = zeros(7, 16);
 newDiseases = zeros(4, 2);
 
+variablesLeft = [1 2 3 4];
+messageTable = zeros(32, 1);
+%{
+for v = variablesLeft % if we're given any of the variables 1, 2, 3, or 4, remove it from this list
+    if any(givens == v) == true
+        variablesLeft(v) = [];
+    end
+end
+%}
 for i = 5:11
+    if sum(messageTable) == 0 % null table, assign it
+        
+    
+    newMessageTable = zeros(length(messageTable)*2, 1);
+    for j = 0:31
+        assign = de2bi(j, cast(log2(length(messageTable), 'int64')));
+        baseVar = 
+    end
+    
     if any(givens == i) == true % when we marginalize over a symptom, its distribution becomes 1
         newSymptoms(i-4, :) = symptoms(i-4, :, assignments(i+1)); % since the variable is given, we take the column indexed for 'True', which is column 2
     elseif any(queries == i) == false
