@@ -68,6 +68,10 @@ $= 0.313192$
 
 So, we have $P(S = true \vert C = true) = \frac{P(S = true, C = true)}{P(C = true)} = \frac{0.313192}{0.4} = \mathbf{0.78298}$
 
+All the factor tables I generated can be seen in the below screenshot. $f_0$ corresponds to the first factor function I created, above, and it follows down such that $f_6 = \varphi_B(H)$. It always shows the final calculation I used to compute the probability above.
+
+\includegraphics[scale=0.8]{q1-factors}
+
 b) 
 
 $P(F = true \vert G = true) = \frac{P(F = true, G = true)}{\sum_F P(F, G = true)}$
@@ -202,9 +206,13 @@ So, $P(W = true, G = true, S = true, B = false) = 0.011087$, $P(W = false, G = t
 
 \pagebreak\textbf{Problem 2}
 
-See code. Run ``python3 decoder.py'' to run the program. The matrix of counts that I found is as follows:
+See code. Run ``python3 decoder.py'' to run the program. You'll need to install the ``scipy'' and ``xlrd'' packages using pip beforehand since they are used to load matlab files and Excel spreadsheets. The matrix of counts that I found is as follows:
 
-\includegraphics[scale=0.9]{q2-matrix}
+\includegraphics[scale=0.75]{q2-matrix}
+
+It is important to note my 83 state orderings are in order of one hidden state for each firstname, in order of how they appear in the document (david, anton, fred, jim, barry). Each firstname is split into as many states as it has characters, for example david1, david2, david3, david4, david5, representing the characters d, a, v, i, and d respectively. Then, after the firstnames, there are the surnames, with as many hidden states as there are characters in the name, just as I mentioned. Finally, there are 2 intermediate states. Question 2 specifically states there is an initial state that generates random characters until a firstname is chosen, so that is one intermediate state. Then, there is another intermediate state, where we generate random characters again until a surname is chosen. After the surname is finished, the question very explicitly states the model goes back to the beginning of the process, as such it goes back to the initial intermediate state. Since it returns back to the original hidden state, a third intermediate state, following the surname completion, is not required for this HMM. So, there are 22 states for the firstnames, 59 states for the surnames, and 2 intermediate states, totalling 83 states. You can view all the transition and emission probabilities I calculated in the Q2-transitions-and-emissions.xlsx file I provided with this code.
+
+It is important to note there might be slight differences in count matrices between students. In the Viterbi algorithm, when you calculate max, the use of $\geq$ in contrast to just $>$ can cause drastic differences in the final counts matrix. Additionally, the structuring of the states might cause differences in count matrices. I just want to make sure you guys are aware of this while grading this question.
 
 \pagebreak\textbf{Problem 3}
 
@@ -286,7 +294,10 @@ $(2^{2n} - 2^n) + (n-3)(2^{2n+1} - 2^n) + (2^{2n+1} - 1)\\
 = n2^{2n+1} - 3(2^{2n+1}) + 2^{2n+1} + 2^{2n} - 2^n - n2^n + 3(2^n) - 1\\
 = 2^{2n+1}(n - 3 + 1) + 2^{2n} - 2^n(1 + n - 3) - 1\\
 = 2^{2n+1}(n - 2) + 2^{2n} - 2^n(n - 2) - 1\\
-= (n-2)(2^{2n+1} - 2^n) + 2^{2n} - 1$
+= (n-2)(2^{2n+1} - 2^n) + 2^{2n} - 1\\
+= O(n2^{2n})\\
+= O(n4^n)$
+
 
 For n = 10, we have \textbf{log(Z) = 186.7916}.
 
@@ -354,9 +365,11 @@ After implementing this method, it can be seen the max difference between the tw
 
 \pagebreak\textbf{Problem 6}
 
-a) The junction tree is as follows:
+a) The junction tree can be seen below:
 
-\includegraphics[scale=0.4]{q6-junctiontree}
+\includegraphics[scale=0.5]{q6-junctiontree-general}
+
+Clearly, this tree has maximal cliques and it is minimal spanning, and it satisfies the running intersection property, so this is the answer to the question.
 
 b) The normal way to calculate the marginal is as follows:
 
@@ -368,13 +381,17 @@ $P(x_1, x_2, x_3, x_4)\\
 = \sum_{x_2}\phi(x_1, x_2)\phi_{x_4}(x_1, x_2)\\
 = \phi_{x_2}(x_1)$
 
+Before we go through the whole absorption procedure, this is what the clique tree would roughly look like, along with explicit separators and new nodes that we would calculate in order to retrieve the marginalization of node $x_1$:
+
+\includegraphics[scale=0.4]{q6-junctiontree}
+
 Now, through the absorption procedure, we get the following:
 
 Let $\phi(x_1, x_2, x_4) = \phi(x_1, x_2)\phi(x_4, x_1)$, $\phi(x_2, x_3, x_4) = \phi(x_2, x_3)\phi(x_3, x_4)$, and $\phi(x_2, x_4) = 1$.
 
 $\phi_1^*(x_2, x_4) = \sum_{x_3}\phi(x_2, x_3, x_4)$
 
-$\phi^*(x_1, x_2, x_4) = \phi(x_1, x_2, x_4)\frac{\phi_1^*(x_2, x_4)}{\phi(x_2, x_4)} = \phi(x_1, x_2, x_4)\frac{\sum_{x_3}\phi(x_2, x_3, x_4)}{\phi(x_2, x_4)} = \phi(x_1, x_2, x_4)\sum_{x_3}\phi(x_2, x_3, x_4) = P(x_1, x_2, x_4)$
+$\phi^*(x_1, x_2, x_4) = \phi(x_1, x_2, x_4)\frac{\phi_1^*(x_2, x_4)}{\phi(x_2, x_4)} = \phi(x_1, x_2, x_4)\frac{\sum_{x_3}\phi(x_2, x_3, x_4)}{\phi(x_2, x_4)} = \phi(x_1, x_2, x_4)\sum_{x_3}\phi(x_2, x_3, x_4)$
 
 $\phi_2^*(x_1, x_2) = \sum_{x_4} \phi^*(x_1, x_2, x_4)$
 
@@ -384,7 +401,7 @@ $\phi_3^*(x_1) = \sum_{x_2}\phi^*(x_1, x_2)$
 
 $\phi^*(x_1) = \phi(x_1)\frac{\phi_3^*(x_1)}{\phi(x_1)} = \phi_3^*(x_1)$
 
-As such,w e have computed the marginal of $x_1$. To verify it is the correct result, we will expand the marginal below:
+As such,w e have computed the marginal of $x_1$, which is $\phi^*(x_1)$. To verify it is the correct result, we will expand the marginal below:
 
 $\phi^*(x_1) \\
 = \phi_3^*(x_1) \\
@@ -398,17 +415,17 @@ $\phi^*(x_1) \\
 = \sum_{x_2}\sum_{x_3}\sum_{x_4} \phi(x_1, x_2)\phi(x_4, x_1)\phi(x_2, x_3)\phi(x_3, x_4)\\
 = \sum_{x_2}\sum_{x_3}\sum_{x_4} \phi(x_1, x_2)\phi(x_2, x_3)\phi(x_3, x_4)\phi(x_4, x_1)$
 
-This above equation is the exact same equation we got above while we were solving for the marginal of $x_1$. As such, we can safely confirm the absorption gives us the correct result.
+This above equation is the exact same equation we got above while we were solving for the marginal of $x_1$ the normal way. As such, we can safely confirm the absorption gives us the correct result.
 
 \pagebreak\textbf{Problem 7}
 
 a) 
 
-The following diagram shows (a) the bayesian network modeling the joint distribution, (b) the bayesian network creating a fully-connected network after moralization, and (c) the junction tree:
+The following diagram shows (a) the bayesian network modeling the joint distribution, (b) the bayesian network creating a fully-connected network after moralization, and (c) the junction tree, which is one big node since the network is fully connected:
 
 \includegraphics[scale=0.1]{q7-trees}
 
-We want to figure out the runtime complexity of calculating $p(x_T)$ as given by the junction tree algorithm. The junction tree algorithm requires the moralization step. In moralization, two parents of a node must have a direct connection. As such, since all nodes are parents of y, all nodes must be connected to each other, leading to a fully-connected network. Since the network becomes fully-connected after moralization, the junction tree algorithm will give us one huge node containing all nodes in the graph, which is represented as $\phi(y, x_1, \dots, x_T) = p(y \vert x_1, \dots, x_T)p(x_1)\prod_{t = 2}^{T} p(x_t \vert x_{t-1})$. Since all variables are binary, and there are $T+1$ nodes, there are a total of $2^{T+1}$ possible state configurations for this node potential. However, since we want just the potential for $x_T$, we only need to marginalize, or sum, over $T$ nodes, leading to $2^T-1$ additions for each of the two states of $x_T$. Since there are 2 states for $x_T$ and we require $2^T - 1$ additions per state, we require $2(2^T - 1) = 2^{T+1} - 1$ calculations, or $O(2^T)$ time for the junction tree algorithm.
+We want to figure out the runtime complexity of calculating $p(x_T)$ as given by the junction tree algorithm. The junction tree algorithm requires the moralization step. In moralization, two parents of a node must have a direct connection. As such, since all nodes are parents of y, all nodes must be connected to each other, leading to a fully-connected network. Since the network becomes fully-connected after moralization, the junction tree algorithm will give us one huge node containing all nodes in the graph, which is represented as $\phi(y, x_1, \dots, x_T) = p(y \vert x_1, \dots, x_T)p(x_1)\prod_{t = 2}^{T} p(x_t \vert x_{t-1})$. Since all variables are binary, and there are $T+1$ nodes, there are a total of $2^{T+1}$ possible state configurations for this node potential. However, since we want just the potential for $x_T$, we only need to marginalize, or sum, over $T$ nodes, leading to $2^T-1$ additions for each of the two states of $x_T$. Since there are 2 states for $x_T$ and we require $2^T - 1$ additions per state, we require $2(2^T - 1) = 2^{T+1} - 2$ calculations, or $O(2^T)$ time for the junction tree algorithm.
 
 b)
 
@@ -439,43 +456,70 @@ a)
 We eliminate the variables in the order $x_{10}$, $x_{9}$, $x_{7}$, $x_{6}$, $x_{5}$, $x_{4}$, $x_{3}$, $x_{2}$, $x_0$ as follows:
 
 $p(x_1 \vert x_{11}, x_8) \\
-= \sum_{x_0, x_2, x_3, x_4, x_5, x_6, x_7, x_9, x_{10}} \phi(x_0, x_1, x_2)\phi(x_0, x_2, x_3)\phi(x_0, x_3, x_4)\phi(x_1, x_2, x_3)\phi(x_1, x_3, x_4)\\\phi(x_2, x_3, x_4)\prod_{i = 5}^{11}\phi(x_1, x_2, x_i)\phi(x_1, x_3, x_i)\phi(x_1, x_4, x_i)\phi(x_2, x_3, x_i)\phi(x_2, x_4, x_i)\phi(x_3, x_4, x_i)$
+= \sum_{x_0, x_2, x_3, x_4, x_5, x_6, x_7, x_9, x_{10}} P(0)P(1 \vert 0)P(2 \vert 0)P(3 \vert 0)P(4 \vert 0)P(5 \vert 1, 2, 3, 4)\\P(6 \vert 1, 2, 3, 4)P(7 \vert 1, 2, 3, 4)P(8 \vert 1, 2, 3, 4)P(9 \vert 1, 2, 3, 4)P(10 \vert 1, 2, 3, 4)P(11 \vert 1, 2, 3, 4)$
 
-Let $\varphi_{11}(x_1, x_2, x_3, x_4) = \phi(x_1, x_2, x_{11})\phi(x_1, x_3, x_{11})\phi(x_1, x_4, x_{11})\phi(x_2, x_3, x_{11})\phi(x_2, x_4, x_{11})\phi(x_3, x_4, x_{11})$
+Note: $x_{11}$ and $x_8$ are given variables, so we do not need to sum over their values. For all other symptoms, they will sum to 1 once they are marginalized out, so we do not need to factor them into the computations.
 
-Note: $x_{11}$ is a given variable, so we do not need to sum over its values.
+$= \sum_{x_0, x_2, x_3, x_4} P(0)P(1 \vert 0)P(2 \vert 0)P(3 \vert 0)P(4 \vert 0)P(x_8 \vert 1, 2, 3, 4)P(x_{11} \vert 1, 2, 3, 4)$
 
-$= \sum_{x_0, x_2, x_3, x_4, x_5, x_6, x_7, x_9, x_{10}} \phi(x_0, x_1, x_2)\phi(x_0, x_2, x_3)\phi(x_0, x_3, x_4)\phi(x_1, x_2, x_3)\phi(x_1, x_3, x_4)\\\phi(x_2, x_3, x_4)\varphi_{11}(x_1, x_2, x_3, x_4)\prod_{i = 5}^{10}\phi(x_1, x_2, x_i)\phi(x_1, x_3, x_i)\phi(x_1, x_4, x_i)\\\phi(x_2, x_3, x_i)\phi(x_2, x_4, x_i)\phi(x_3, x_4, x_i)$
+Let $\varphi_4(0, 1, 2, 3) = \sum_{x_4} P(4 \vert 0)P(x_8 \vert 1, 2, 3, 4)P(x_{11} \vert 1, 2, 3, 4)$
 
-Let $\varphi_{10}(x_1, x_2, x_3, x_4) = \sum_{x_{10}} \phi(x_1, x_2, x_{10})\phi(x_1, x_3, x_{10})\phi(x_1, x_4, x_{10})\phi(x_2, x_3, x_{10})\phi(x_2, x_4, x_{10})\phi(x_3, x_4, x_{10})$
+$= \sum_{x_0, x_2, x_3} P(0)P(1 \vert 0)P(2 \vert 0)P(3 \vert 0)\varphi_4(0, 1, 2, 3)$
 
-$= \sum_{x_0, x_2, x_3, x_4, x_5, x_6, x_7, x_9} \phi(x_0, x_1, x_2)\phi(x_0, x_2, x_3)\phi(x_0, x_3, x_4)\phi(x_1, x_2, x_3)\phi(x_1, x_3, x_4)\\\phi(x_2, x_3, x_4)\varphi_{10}(x_1, x_2, x_3, x_4)\varphi_{11}(x_1, x_2, x_3, x_4)\prod_{i = 5}^{9}\phi(x_1, x_2, x_i)\phi(x_1, x_3, x_i)\phi(x_1, x_4, x_i)\\\phi(x_2, x_3, x_i)\phi(x_2, x_4, x_i)\phi(x_3, x_4, x_i)$
+Let $\varphi_3(0, 1, 2) = \sum_{x_3} P(3 \vert 0)\varphi_4(0, 1, 2, 3)$
 
-Let $\forall_{i \in \{5, 6, 7, 9\}}\varphi_{i}(x_1, x_2, x_3, x_4) = \sum_{x_{i}} \phi(x_1, x_2, x_{i})\phi(x_1, x_3, x_{i})\phi(x_1, x_4, x_{i})\phi(x_2, x_3, x_{i})\\\phi(x_2, x_4, x_{i})\phi(x_3, x_4, x_{i})$
+$= \sum_{x_0, x_2} P(0)P(1 \vert 0)P(2 \vert 0)\varphi_3(0, 1, 2)$
 
-And $\varphi_{8}(x_1, x_2, x_3, x_4) =  \phi(x_1, x_2, x_{8})\phi(x_1, x_3, x_{8})\phi(x_1, x_4, x_{8})\phi(x_2, x_3, x_{8})\phi(x_2, x_4, x_{8})\phi(x_3, x_4, x_{8})$ for a similar reason to $x_{11}$ mentioned above.
+Let $\varphi_2(0, 1) = \sum_{x_2} P(2 \vert 0)\varphi_3(0, 1, 2)$
 
-$= \sum_{x_0, x_2, x_3, x_4} \phi(x_0, x_1, x_2)\phi(x_0, x_2, x_3)\phi(x_0, x_3, x_4)\phi(x_1, x_2, x_3)\phi(x_1, x_3, x_4)\\\phi(x_2, x_3, x_4)\prod_{i = 5}^{11}\varphi_{i}(x_1, x_2, x_3, x_4)$
+$= \sum_{x_0} P(0)P(1 \vert 0)\varphi_2(0, 1)$
 
-Let $\varphi_4(x_0, x_1, x_2, x_3) = \sum_{x_4} \phi(x_0, x_3, x_4)\phi(x_1, x_3, x_4)\phi(x_2, x_3, x_4)\prod_{i = 5}^{11}\varphi_i(x_1, x_2, x_3, x_4)$
-
-$= \sum_{x_0, x_2, x_3} \phi(x_0, x_1, x_2)\phi(x_0, x_2, x_3)\phi(x_1, x_2, x_3)\varphi_4(x_0, x_1, x_2, x_3)$
-
-Let $\varphi_3(x_0, x_1, x_2) = \sum_{x_3} \phi(x_0, x_2, x_3)\phi(x_1, x_2, x_3)\varphi_4(x_0, x_1, x_2, x_3)$
-
-$= \sum_{x_0, x_2} \phi(x_0, x_1, x_2)\varphi_3(x_0, x_1, x_2)$
-
-Let $\varphi_2(x_0, x_1) = \sum_{x_2} \phi(x_0, x_1, x_2)\varphi_3(x_0, x_1, x_2)$
-
-$= \sum_{x_0} \varphi_2(x_0, x_1)$
-
-Let $\varphi_0(x_1) = \sum_{x_0} \varphi_2(x_0, x_1)$
+Let $\varphi_0(x_1) = \sum_{x_0} P(0)P(1 \vert 0)\varphi_2(0, 1)$
 
 $= \varphi_0(x_1)$
 
-Now, we will calculate the runtime of this algorithm. $\varphi_{11}$ and $\varphi_8$ require 5 simple multiplications each. Then, $\forall_{i \in \{5, 6, 7, 9, 10\}}\varphi_{i}(x_1, x_2, x_3, x_4)$ requires 5 multiplications for both iterations of the loop, in addition to 1 addition, resulting in 2(5) + 1 = 11 operations. For $\varphi_4(x_0, x_1, x_2, x_3)$, there are 9 multiplications for each iteration, and one addition, resulting in 2(9) + 1 = 19 operations. For $\varphi_3(x_0, x_1, x_2)$ requires 2 multiplications for each iteration, and one addition, resulting in 2(2) + 1 = 5 calculations. For $\varphi_2(x_0, x_1)$, we require there is one multiplication per loop iteration, and one addition, resulting in 2(1) + 1 = 3 calculations. Finally, $\varphi_0(x_1)$ requires 1 addition. So, the total number of calculations is 2(5) + 5(11) + 19 + 5 + 3 + 1 = 93 computations.
+Now, we will calculate the runtime of this algorithm. For $\varphi_4(0, 1, 2, 3)$, there are 2 multiplications for each iteration, and one addition, resulting in 2(2) + 1 = 5 operations. For $\varphi_3(0, 1, 2)$ requires 1 multiplications for each iteration, and one addition, resulting in 2(1) + 1 = 3 calculations. For $\varphi_2(0, 1)$, there is 1 multiplication per loop iteration, and one addition, resulting in 2(1) + 1 = 3 calculations. Finally, $\varphi_0(1)$ requires 2 multiplications per loop and 1 addition, so 2(2) + 1 = 5 calculations. So, the total number of calculations is 5 + 3 + 3 + 5 = 16 computations.
 
-In terms of space, we need $2^4 = 16$ storage spaces for $\forall_{i \in \{5, \dots, 11\}}\varphi_{i}(x_1, x_2, x_3, x_4)$, $2^4 = 16$ storage space for $\varphi_4(x_0, x_1, x_2, x_3)$, $2^3 = 8$ storage spaces for $\varphi_3(x_0, x_1, x_2)$, $2^2 = 4$ spaces for $\varphi_2(x_0, x_1)$, and 2 spaces for $\varphi_0(x_1)$. In total, this means we need 7(16) + 16 + 8 + 4 + 2 = 142 storage spaces for this variable elimination algorithm.
+In terms of space, we need $2^4 = 16$ storage spaces for the entire algorithm since the only factor table we really calculate is $\varphi_4(0, 1, 2, 3)$. When we do individual marginalizations after that, we can do that in place, so we don't need any extra space to compute the additional factor tables.
 
-b) The messages here correspond to the marginal distribution over the four main factors (labeled 1, 2, 3, and 4), which are HasFlu, HasFoodPoisoning, HasHayFever, and HasPneumonia. So, basically, the messages being passed through the network correspond to the probabilities of diseases.
+b) Below is the clique tree:
+
+\includegraphics[scale=0.1]{q8b-cliquetree}
+
+(i) The messages here correspond to the distribution of potentials after marginalizing out a given variable. This sub-question is really ambiguous and confusing. Messages are just the result of the tree removing a set of variables. I spoke with Dr. Fekri and he thought it was a little ambiguous as well, or so was inferred from his response. There's nothing special about this junction tree. The first message is just the result of explaining away the 11th node, which is HasFever. This continues, where the next few nodes explain away all the symptoms, then we explain away the diseases, and then finally explain away the IsSummer node. Basically, when a node is not given in a query, that node is kind of removed from the joint distributions, or new factor functions, so we do not have to worry about them again in the future. I'm really just not sure what you're looking for in this question, it's poorly worded, but I think my answer should suffice. In general, the runtime for message passing is O(KN) where K = size of maximal clique. In our case, as seen above, K = 5. So, the runtime is O(5N) = O(N).
+
+As such, the runtime for query 1 would be estimated to be around 5N = 5(11) = 55 operations. As for the space complexity, the biggest tables we have are $2^4 = 16$ + 16 = 32 states because we will need 16 states for the largest node, which is for the node attached to $x_11$ and $x_8$, and then another 16 states for the largest messages that we pass along. So, we need to store both the node states and the messages' states.
+
+(ii) The factors correspond to interactions between diseases and symptoms. For example, some diseases, such as HasFlu, might have a stronger interaction or potential with Coughs, rather than HasRash. As such, the individual factors just compensate for how well the individual symptoms and diseases interact with each other. And then the messages take this information, or these interactions, and pass it onto the next node through message passing.
+c) Run ``q8\_c.m'' to get all the tables, which are located in ``symptoms'', ``diseases'', and ``summer\_probs''.
+
+d) The L1 error I am getting is 0.330793. You can run ``q8\_d.m'' to verify. Make sure to run ``q8\_c.m'' beforehand to generate all the tables.
+
+e) I implemented variable elimination. You can test it using ``q8\_e.py''. The necessary libraries you need are scipy. In the below tables a bit being 0 means that variable takes the ``false'' value, and 1 means ``true''.
+
+The result for query 1 is as follows:
+
+\includegraphics[scale=0.8]{query1}
+
+As we can see, the probability of HasFever = true is 0.5162.
+
+The result for query 2 is as follows:
+
+\includegraphics[scale=0.7]{query2}
+
+The above is just simply the probability table for nodes 7, 8, 9, 10, and 11, which is what the question requested. The binary bit values are on the left, and the probability is on the right. I have verified all the probabilities sum to 1, since my program sums up the probabilities to ensure they sum to 1.
+
+The result for query 3 is as follows:
+
+\includegraphics[scale=0.8]{query3}
+
+As seen above, the probability IsSummer = true is 0.0971.
+
+I implemented all the queries in my code. If you want to run my code for a query, you need to modify three lists: ``givens'', ``givenVals'', and ``queries'', which contain the node subscripts for the given nodes (8 and 11 for first query), their given values (1 and 1 for first query -- only other option is 0 for a given node), and finally the node subscripts for the query nodes (1 for first query).
+
+\textbf{Report}
+
+In summary, our model does pretty well. The L1 error from the true distribution is about 0.3308, and considering there are 4096 possible state configurations, that means each parameter is off by 0.3308 / 4096 = 0.000081 on average, which is impressive. We can assume the parameters we estimated are correct. Additionally, we implemented variable elimination suitable for querying this graph, which works well and really shows how efficient our implementation is in practice. I imagine if this graph had like a million nodes the runtime would begin to degrade, but that's much more efficient than the naive implementation of summing over $2^N$ nodes, which might degrade with a thousand nodes.
+
+In terms of the accuracy of the predictions above compared to the true underlying distribution, I am unsure, but I am confident because I computed the 1st and 3rd queries by hand to make sure their probabilities were correct, and they are the same values. However, query 2 was a bit harder since it takes forever to create that table of 32 tables when you have to marginalize over all 4 diseases and the IsSummer node.
 \end{document}

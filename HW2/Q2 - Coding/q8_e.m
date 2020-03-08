@@ -201,6 +201,12 @@ for i = (firstMarginalizedDisease-1):-1:1 %(firstMarginalizedDisease+1)
         
         messageTable = newMessageTable;
         numDiseasesNotMarginalized = numDiseasesNotMarginalized - 1;
+    
+        if i == 2
+            error("MARGINALIZING OVER NODE 2")
+        elsif
+            disp("MARGINALIZING OVER ANOTHER NODE")
+        end
     end
 end
 
@@ -210,5 +216,7 @@ finalTable = zeros(2, 1);
 finalTable(1) = summer_probs(1)*diseases(1, 1, 1)*messageTable(bi2de([0 0])+1) + summer_probs(2)*diseases(1, 2, 1)*messageTable(bi2de([1 0])+1);
 finalTable(2) = summer_probs(1)*diseases(1, 1, 2)*messageTable(bi2de([0 1])+1) + summer_probs(2)*diseases(1, 2, 2)*messageTable(bi2de([1 1])+1);
 
+disp(finalTable(1))
+disp(finalTable(2))
 fprintf("Prob x_1 == FALSE: %f\n", finalTable(1) / (finalTable(1) + finalTable(2)));
 fprintf("Prob x_1 == TRUE: %f\n", finalTable(2) / (finalTable(1) + finalTable(2)));

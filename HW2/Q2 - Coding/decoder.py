@@ -17,18 +17,18 @@ transitions = []
 emissions = []
 hidden_states = []
 
-intermediate_state_names = [None, "start_firstname", "start_surname", "end_surname"]
+intermediate_state_names = [None, "start_firstname", "start_surname"]
 firstnames = ["david", "anton", "fred", "jim", "barry"]
 surnames = ["barber", "ilsung", "fox", "chain", "fitzwilliam", "quinceadams", "grafvonunterhosen"]
 
 # populate transition matrix
-transitions = pd.read_excel("Q2-transitions-and-emissions.xlsx", sheet_name = "transitions_renamed_new")
+transitions = pd.read_excel("Q2-transitions-and-emissions.xlsx", sheet_name = "transitions_renamed")
 hidden_states = list(transitions[transitions.columns[0]])
 normal_column_names = transitions.columns[1:]
 transitions = transitions[normal_column_names]
 
 # populate emission matrix
-emissions = pd.read_excel("Q2-transitions-and-emissions.xlsx", sheet_name = "emissions_renamed_new", usecols = "B:AA")
+emissions = pd.read_excel("Q2-transitions-and-emissions.xlsx", sheet_name = "emissions_renamed", usecols = "B:AA")
 
 # initialize step 0
 probs[0] = { hidden_state : float('-inf') for hidden_state in hidden_states }
