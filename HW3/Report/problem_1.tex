@@ -1,0 +1,64 @@
+\textbf{Problem 1}
+
+a)
+
+$P(X \leq y)\\
+= P(F^{-1}(U) \leq y)\quad$ (NOTE: $X \sim F^{-1}(U)$)\\
+$= P(U \leq F(y))\\
+= F(y)$
+
+As shown above, x follows the distribution F. The drawback of this method is that it only works if we know the true distribution of $F^{-1}$. 
+
+b) There are two cases we must show, the cyclical and the mixture. First, let $K(x, z) = (K_1 \circ K_2)(x, z)$. Now, we will show the cyclical kernel has a stationary density:
+
+$\int\int p(x)K_2(x, y)K_1(y, z) dy dx\\
+= \int p(y)K_1(y, z) dy\quad$ (NOTE: $\int p(x)K_2(x, y) dx = p(y)$)\\
+$= p(z)$
+
+And for the mixture:
+
+$\int p(x)(\lambda K_1(x, y) + (1-\lambda)K_2(x, y)) dx\\
+= \int p(x)\lambda K_1(x, y)dx + \int p(x)(1-\lambda)K_2(x, y)dx\\
+= \lambda\int p(x)K_1(x, y)dx + (1-\lambda)\int p(x)K_2(x, y)dx\\
+= \lambda p(y) + (1-\lambda)p(y)\\
+= p(y)$
+
+Despite both of these results being for the continuous case, it should be pretty obvious how they expand to the discrete case, as the integral is just an infinite summation, where the discrete would have a finite summation.
+
+c) The transition probability of MH is as follows:
+
+$p(x \rightarrow x') = q(x' \vert x)A(x', x)$
+
+$A(x, x_t) = min(1, \frac{\tilde{p}(x)q(x_t \vert x)}{\tilde{p}(x_t)q(x \vert x_t)})$
+
+So, we have the following:
+
+$p(x)p(x \rightarrow x')\\
+= p(x)q(x' \vert x)A(x', x)\\
+= min(p(x)q(x' \vert x), p(x', q(x\vert x'))\\
+= min(p(x')q(x\vert x'), p(x)q(x', x))\\
+= p(x')q(x\vert x')A(x, x')\\
+= p(x')p(x' \rightarrow x)$
+
+As shown above, the transition kernel satisfies the detailed balance property. 
+
+d) 
+
+For notation purposes, let $p(x_{-i})$ be the joint distribution over all variables except for $x_i$ (i.e. $p(x_{-1}) = p(x_2, \dots, x_d)$.
+
+We know the transition kernel is $K(x, x') = p(x_1' \vert x_2, \dots, x_d)p(x_2' \vert x_1', x_3, \dots, x_d)\dots p(x_d' \vert x_1', x_2', \dots, x_{d-1}')$. So, we can begin to show p(x) is the stationary distribution of the Markov chain as follows:
+
+$\int K(x, x')p(x)dx\\
+= \int p(x_1' \vert x_2, \dots, x_d)p(x_2' \vert x_1', x_3, \dots, x_d)\dots p(x_d' \vert x_1', x_2', \dots, x_{d-1}')p(x_{-1})p(x_1 \vert x_{-1})dx_1\cdots dx_d$
+
+We can see $p(x_{-1})p(x_1 \vert x_{-1})dx_1 = p(x)$ and $\int p(x_1 \vert x_{-1})dx_1 = 1$, so we can remove that term, similar to how in variable elimination we could do the same thing (in a conditional distribution, if summing over the input variable, the summation is 1). Additionally, please note we know $p(x_1' \vert x_2, \dots, x_d)p(x_{-1}) = p(x_1', x_2, \dots, x_d)$. We can proceed as follows:
+
+$= \int p(x_2' \vert x_1', x_3, \dots, x_d)\dots p(x_d' \vert x_1', x_2', \dots, x_{d-1}')p(x_1', x_2, \dots, x_d)p(x_1 \vert x_{-1})dx_1\cdots dx_d\\
+= \int p(x_2' \vert x_1', x_3, \dots, x_d)\dots p(x_d' \vert x_1', x_2', \dots, x_{d-1}')p(x_1', x_3, \dots, x_d)p(x_2 \vert x_1', x_3, \dots, x_d)dx_2\cdots dx_d\\
+= \int p(x_3' \vert x_1', x_2', x_4, \dots, x_d)\dots p(x_d' \vert x_1', x_2', \dots, x_{d-1}')p(x_1', x_2', x_4, \dots, x_d)p(x_2 \vert x_1', x_3, \dots, x_d)dx_2\cdots dx_d\\
+= \int p(x_3' \vert x_1', x_2', x_4, \dots, x_d)\dots p(x_d' \vert x_1', x_2', \dots, x_{d-1}')p(x_1', x_2', x_4, \dots, x_d)p(x_3 \vert x_1', x_2', x_4, \dots, x_d)dx_3\cdots dx_d\\
+\dots\\
+= \int p(x_1', x_2', \dots, x_d)\\
+= \int p(x')$
+
+We can see from the above, p(x) is the stationary distribution of the Markov chain.

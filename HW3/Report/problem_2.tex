@@ -1,0 +1,61 @@
+\pagebreak\textbf{Problem 2}
+
+Let $y_1 = \cos(2\pi x_2)\sqrt{-2\log(x_1)}$.
+
+Let $y_2 = \sin(2\pi x_2)\sqrt{-2\log(x_1)}$.
+
+We execute change of variables as follows:
+
+$\frac{y_1}{y_2} = \frac{\cos(2\pi x_2)\sqrt{-2\log(x_1)}}{\sin(2\pi x_2)\sqrt{-2\log(x_1)}}\\
+\implies \frac{y_1}{y_2} = \frac{\cos(2\pi x_2)}{\sin(2\pi x_2)}\\
+\implies \frac{y_1}{y_2} = \tan(2\pi x_2)\\
+\implies \arctan(\frac{y_2}{y_1}) = 2\pi x_2\\
+\implies \frac{1}{2\pi}\arctan(\frac{y_2}{y_1}) = x_2$
+
+$y_1^2 + y_2^2 = (\cos(2\pi x_2)\sqrt{-2\log(x_1)})^2 + (\sin(2\pi x_2)\sqrt{-2\log(x_1)})^2\\
+\implies y_1^2 + y_2^2 = -2\log(x_1)(\cos^2(2\pi x_2) + \sin^2(2\pi x_2))\\
+\implies y_1^2 + y_2^2 = -2\log(x_1)\\
+\implies -\frac{1}{2}(y_1^2 + y_2^2) = \log(x_1)\\
+\implies \exp(-\frac{1}{2}(y_1^2 + y_2^2)) = x_1$
+
+So, we have found $x_1 = \exp(-\frac{1}{2}(y_1^2 + y_2^2))$ and $x_2 = \frac{1}{2\pi}\arctan(\frac{y_2}{y_1})$.
+
+We can calculate partial derivatives for the jacobian as follows:
+
+$\frac{\delta x_1}{\delta y_1} = -y_1\exp(-\frac{1}{2}(y_1^2 + y_2^2))$
+
+$\frac{\delta x_1}{\delta y_2} = -y_2\exp(-\frac{1}{2}(y_1^2 + y_2^2))$
+
+$\frac{\delta x_2}{\delta y_1} = -y_2\frac{1}{2\pi(y_1^2 + y_2^2)}$
+
+$\frac{\delta x_2}{\delta y_2} = y_1\frac{1}{2\pi(y_1^2 + y_2^2)}$
+
+Then, the jacobian is computed as follows:
+
+$p(y_1, y_2) \implies J = \bigg\vert det\begin{bmatrix}
+\frac{\delta x_1}{\delta y_1} & \frac{\delta x_1}{\delta y_2}\\
+\frac{\delta x_2}{\delta y_1} & \frac{\delta x_2}{\delta y_2}
+\end{bmatrix} \bigg\vert \\
+= \bigg\vert det\begin{bmatrix}
+-y_1\exp(-\frac{1}{2}(y_1^2 + y_2^2)) & -y_2\exp(-\frac{1}{2}(y_1^2 + y_2^2))\\
+-y_2\frac{1}{2\pi(y_1^2 + y_2^2)} & y_1\frac{1}{2\pi(y_1^2 + y_2^2)}
+\end{bmatrix} \bigg\vert \\
+= \bigg\vert -y_1^2 \frac{\exp(-\frac{1}{2}(y_1^2 + y_2^2))}{2\pi(y_1^2 + y_2^2)} - y_2^2 \frac{\exp(-\frac{1}{2}(y_1^2 + y_2^2))}{2\pi(y_1^2 + y_2^2)} \bigg\vert\\
+= \bigg\vert \frac{\exp(-\frac{1}{2}(y_1^2 + y_2^2))}{2\pi(y_1^2 + y_2^2)}(-y_1^2 - y_2^2) \bigg\vert\\
+= \bigg\vert -\frac{\exp(-\frac{1}{2}(y_1^2 + y_2^2))}{2\pi(y_1^2 + y_2^2)}(y_1^2 + y_2^2) \bigg\vert\\
+= \bigg\vert -\frac{\exp(-\frac{1}{2}(y_1^2 + y_2^2))}{2\pi} \bigg\vert\\
+= \frac{\exp(-\frac{1}{2}(y_1^2 + y_2^2))}{2\pi}\\
+= \frac{\exp(-\frac{1}{2}y_1^2)\exp(-\frac{1}{2}y_2^2)}{\sqrt{2\pi}\sqrt{2\pi}}\\
+= \frac{\exp(-\frac{1}{2}y_1^2)}{\sqrt{2\pi}}\frac{\exp(-\frac{1}{2}y_2^2)}{\sqrt{2\pi}}\\
+= N(y_1 \vert 0, 1)N(y_2 \vert 0, 1) \qed$
+
+The algorithm to sample from a univariate normal distribution is rather straightforward. In the above proof, we showed $y_1$ and $y_2$ were both normally distributed variables. We also know $x_1$ and $x_2$ are drawn from uniform distributions. Finally, through properties of statistics, since $y_1$ and $y_2$ are normally distributed, then $z_1 = y_1\sigma + \mu$ and $z_2 = y_2\sigma + \mu$ are both normally distributed with mean $\mu$ and standard deviation $\sigma$.
+
+So, the general steps are as follows
+\begin{enumerate}
+	\item Sample $x_1$ from a uniform distribution across all the reals
+	\item Sample $x_2$ from a uniform distribution across all the reals
+	\item Calculate $y = \cos(2\pi x_2)\sqrt{-2\log(x_1)}$ or $y = \sin(2\pi x_2)\sqrt{-2\log(x_1)}$
+	\item Calculate $z = y\sigma + \mu$
+	\item Done. $z$ is your random sample from a univariate Normal distribution with mean $\mu$ and std $\sigma$.
+\end{enumerate}
