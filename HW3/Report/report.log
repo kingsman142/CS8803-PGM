@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.9.9)  18 MAR 2020 14:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.9.9)  1 APR 2020 18:14
 entering extended mode
 **./report.tex
 (report.tex
@@ -765,7 +765,7 @@ File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 
 
 ]
-<mh-estimated-means-with-sigma-05-1.png, id=77, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-05-1.png, id=83, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-05-1.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-05-1.png>
@@ -773,7 +773,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-05-1.png used on input l
 ine 64.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-05-2.png, id=79, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-05-2.png, id=85, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-05-2.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-05-2.png>
@@ -781,7 +781,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-05-2.png used on input l
 ine 65.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-05-3.png, id=80, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-05-3.png, id=86, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-05-3.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-05-3.png>
@@ -789,7 +789,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-05-3.png used on input l
 ine 66.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-05-4.png, id=81, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-05-4.png, id=87, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-05-4.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-05-4.png>
@@ -797,7 +797,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-05-4.png used on input l
 ine 67.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-05-5.png, id=82, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-05-5.png, id=88, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-05-5.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-05-5.png>
@@ -805,7 +805,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-05-5.png used on input l
 ine 68.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-05-6.png, id=83, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-05-6.png, id=89, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-05-6.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-05-6.png>
@@ -813,7 +813,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-05-6.png used on input l
 ine 69.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-5-1.png, id=84, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-5-1.png, id=90, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-5-1.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-5-1.png>
@@ -821,7 +821,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-5-1.png used on input li
 ne 76.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-5-2.png, id=85, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-5-2.png, id=91, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-5-2.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-5-2.png>
@@ -829,7 +829,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-5-2.png used on input li
 ne 77.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-5-3.png, id=86, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-5-3.png, id=92, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-5-3.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-5-3.png>
@@ -837,7 +837,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-5-3.png used on input li
 ne 78.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-5-4.png, id=87, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-5-4.png, id=93, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-5-4.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-5-4.png>
@@ -845,7 +845,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-5-4.png used on input li
 ne 79.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-5-5.png, id=88, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-5-5.png, id=94, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-5-5.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-5-5.png>
@@ -853,7 +853,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-5-5.png used on input li
 ne 80.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-5-6.png, id=89, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-5-6.png, id=95, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-5-6.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-5-6.png>
@@ -861,42 +861,42 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-5-6.png used on input li
 ne 81.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<gibbs-estimated-means-1.png, id=90, 462.528pt x 346.896pt>
+<gibbs-estimated-means-1.png, id=96, 462.528pt x 346.896pt>
 File: gibbs-estimated-means-1.png Graphic file (type png)
 
 <use gibbs-estimated-means-1.png>
 Package pdftex.def Info: gibbs-estimated-means-1.png used on input line 88.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<gibbs-estimated-means-2.png, id=91, 462.528pt x 346.896pt>
+<gibbs-estimated-means-2.png, id=97, 462.528pt x 346.896pt>
 File: gibbs-estimated-means-2.png Graphic file (type png)
 
 <use gibbs-estimated-means-2.png>
 Package pdftex.def Info: gibbs-estimated-means-2.png used on input line 89.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<gibbs-estimated-means-3.png, id=92, 462.528pt x 346.896pt>
+<gibbs-estimated-means-3.png, id=98, 462.528pt x 346.896pt>
 File: gibbs-estimated-means-3.png Graphic file (type png)
 
 <use gibbs-estimated-means-3.png>
 Package pdftex.def Info: gibbs-estimated-means-3.png used on input line 90.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<gibbs-estimated-means-4.png, id=93, 462.528pt x 346.896pt>
+<gibbs-estimated-means-4.png, id=99, 462.528pt x 346.896pt>
 File: gibbs-estimated-means-4.png Graphic file (type png)
 
 <use gibbs-estimated-means-4.png>
 Package pdftex.def Info: gibbs-estimated-means-4.png used on input line 91.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<gibbs-estimated-means-5.png, id=94, 462.528pt x 346.896pt>
+<gibbs-estimated-means-5.png, id=100, 462.528pt x 346.896pt>
 File: gibbs-estimated-means-5.png Graphic file (type png)
 
 <use gibbs-estimated-means-5.png>
 Package pdftex.def Info: gibbs-estimated-means-5.png used on input line 92.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<gibbs-estimated-means-6.png, id=95, 462.528pt x 346.896pt>
+<gibbs-estimated-means-6.png, id=101, 462.528pt x 346.896pt>
 File: gibbs-estimated-means-6.png Graphic file (type png)
 
 <use gibbs-estimated-means-6.png>
@@ -943,8 +943,8 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 16372 strings out of 493320
- 297234 string characters out of 3145002
+ 16377 strings out of 493320
+ 297265 string characters out of 3145002
  386634 words of memory out of 3000000
  19511 multiletter control sequences out of 15000+200000
  9608 words of font info for 38 fonts, out of 3000000 for 9000
@@ -960,9 +960,9 @@ s/type1/public/amsfonts/cm/cmmi8.pfb><A:/MiKTeX 2.9/fonts/type1/public/amsfonts
  2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><A:/MiKTeX 2.9/fonts/type1/public/
 amsfonts/cm/cmsy10.pfb><A:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
 
-Output written on report.pdf (15 pages, 489930 bytes).
+Output written on report.pdf (15 pages, 494898 bytes).
 PDF statistics:
- 196 PDF objects out of 1000 (max. 8388607)
- 27 named destinations out of 1000 (max. 500000)
+ 202 PDF objects out of 1000 (max. 8388607)
+ 32 named destinations out of 1000 (max. 500000)
  103 words of extra memory for PDF output out of 10000 (max. 10000000)
 

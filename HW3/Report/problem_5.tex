@@ -1,1 +1,18 @@
 \textbf{Problem 5}
+
+$p(d \vert s, D)\\
+= \frac{p(s, D \vert d)p(d)}{p(s, D)}\\
+= \frac{p(s \vert d)p(D \vert d)p(d)}{p(s)p(D)}\\
+= \int_{W, b, p} \frac{p(s, W, b, p \vert d)p(d)p(W, b, p)p(D \vert d, W, b, p)}{p(s, W, b, p)}\\
+= \int_{W, b, p} p(d \vert s, W, b, p)p(W, b, p)p(D \vert d, W, b, p)\\
+= \int_{W, b, p} p(d \vert s, W, b, p)p(W, b, p)\prod_{n = 1}^{N}p(s^n \vert d^n, W, b)p(d^n \vert p)\\
+= \int_{W, b, p} p(d \vert s, W, b, p)p(W, b, p \vert D)$ $\qquad\qed$
+
+One way to estimate $p(d_i = 1 \vert s, D)$ using sampling is to just use Gibbs sampling. Since we're given the network, and corresponding likelihood equation, we can proceed as follows:
+\begin{enumerate}
+	\item Fix all diseases at 0 or 1 to produce disease vector $\textbf{d}$
+	\item At each iteration $i$, fix all $d_{-i}$ and calculate $p(d_i = 0 \vert s, D)$ and $p(d_i = 1 \vert s, D)$ using the above network.
+	\item Then, change $\mathbf{d_i}$ to the value with the highest probability (0 or 1).
+	\item Repeat (go back to step 1) for a certain number of iterations, which is just the burn-in. At this point, the disease vector $\textbf{d}$ should have converged already.
+	\item Once finished with the burn-in, iterate over the diseases again and carry out the same calculations as step (2) to find $p(d_i = 1 \vert s, D)$. These are the final disease probabilities.
+\end{enumerate}
