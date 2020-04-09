@@ -72,5 +72,5 @@ for i in range(BURNIN):
 print(curr_probs)
 #for i in range(NUM_DISEASES):
 #    _, probs[i] = get_random_sample_and_prob(s, curr_probs, W, b, i, p)
-probs = [probs[i] / counts[i] for i in range(NUM_DISEASES)]
+probs = [round(probs[i] / counts[i], 4) for i in range(NUM_DISEASES)]
 print(probs)
