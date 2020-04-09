@@ -26,12 +26,11 @@ loopyMarginals(4, :) = normalize(mess(9, :) .* mess(10, :), 'norm', 1); % margin
 disp(loopyMarginals.');
 
 % part B -- variational mean-field equations
-numIterations = 25;
-oneMarginal = rand(2, 1); %array(1, condp(rand(2, 1))); % 2x1 distribution
-twoMarginal = rand(2, 1); %array(2, condp(rand(2, 1))); % 2x1 distribution
-threeMarginal = rand(2, 1); %array(3, condp(rand(2, 1))); % 2x1 distribution
-fourMarginal = rand(2, 1); %array(4, condp(rand(2, 1))); % 2x1 distribution
-joint = multpots({phi(1), phi(2), phi(3), phi(4), phi(5)});
+numIterations = 50;
+oneMarginal = rand(2, 1); % 2x1 distribution
+twoMarginal = rand(2, 1); % 2x1 distribution
+threeMarginal = rand(2, 1); % 2x1 distribution
+fourMarginal = rand(2, 1); % 2x1 distribution
 tmp = zeros(2, 2, 2, 2);
 for i = 1:2 % x_1
     for j = 1:2 % x_2
@@ -42,17 +41,7 @@ for i = 1:2 % x_1
         end
     end
 end
-tmp = log(tmp);
-for i = 0:numIterations
-    %tmp = multpots({phi(1), phi(2), phi(3), phi(4), phi(5)});    
-    % MED = 0.101594
-    %{
-    oneMarginal = condpot(exppot(sumpot(multpots({logpot(tmp), twoMarginal, threeMarginal, fourMarginal}), [2 3 4])));
-    twoMarginal = condpot(exppot(sumpot(multpots({logpot(tmp), oneMarginal, threeMarginal, fourMarginal}), [1 3 4])));
-    threeMarginal = condpot(exppot(sumpot(multpots({logpot(tmp), oneMarginal, twoMarginal, fourMarginal}), [1 2 4])));
-    fourMarginal = condpot(exppot(sumpot(multpots({logpot(tmp), oneMarginal, twoMarginal, threeMarginal}), [1 2 3])));
-    %}
-    
+for i = 0:numIterations    
     oneMarginalTmp = zeros(2, 2, 2, 2);
     twoMarginalTmp = zeros(2, 2, 2, 2);
     threeMarginalTmp = zeros(2, 2, 2, 2);
@@ -62,10 +51,10 @@ for i = 0:numIterations
         for k = 1:2 % x_2
             for m = 1:2 % x_3
                 for n = 1:2 % x_4
-                    oneMarginalTmp(j, k, m, n) = tmp(j, k, m, n) * twoMarginal(k) * threeMarginal(m) * fourMarginal(n);
-                    twoMarginalTmp(j, k, m, n) = tmp(j, k, m, n) * oneMarginal(j) * threeMarginal(m) * fourMarginal(n);
-                    threeMarginalTmp(j, k, m, n) = tmp(j, k, m, n) * oneMarginal(j) * twoMarginal(k) * fourMarginal(n);
-                    fourMarginalTmp(j, k, m, n) = tmp(j, k, m, n) * oneMarginal(j) * twoMarginal(k) * threeMarginal(m);
+                    oneMarginalTmp(j, k, m, n) = log(tmp(j, k, m, n)) * twoMarginal(k) * threeMarginal(m) * fourMarginal(n);
+                    twoMarginalTmp(j, k, m, n) = log(tmp(j, k, m, n)) * oneMarginal(j) * threeMarginal(m) * fourMarginal(n);
+                    threeMarginalTmp(j, k, m, n) = log(tmp(j, k, m, n)) * oneMarginal(j) * twoMarginal(k) * fourMarginal(n);
+                    fourMarginalTmp(j, k, m, n) = log(tmp(j, k, m, n)) * oneMarginal(j) * twoMarginal(k) * threeMarginal(m);
                 end
             end
         end
@@ -89,21 +78,13 @@ for i = 0:numIterations
     twoMarginal = twoMarginalTmp ./ sum(twoMarginalTmp, 'all');
     threeMarginal = threeMarginalTmp ./ sum(threeMarginalTmp, 'all');
     fourMarginal = fourMarginalTmp ./ sum(fourMarginalTmp, 'all');
-    
-    %{
-    oneMarginal = condpot(exppot(sumpot(multpots({tmp, twoMarginal, threeMarginal, fourMarginal}), [2 3 4])));
-    twoMarginal = condpot(exppot(sumpot(multpots({tmp, oneMarginal, threeMarginal, fourMarginal}), [1 3 4])));
-    threeMarginal = condpot(exppot(sumpot(multpots({tmp, oneMarginal, twoMarginal, fourMarginal}), [1 2 4])));
-    fourMarginal = condpot(exppot(sumpot(multpots({tmp, oneMarginal, twoMarginal, threeMarginal}), [1 2 3])));
-    %}
 end
-%mfMarginals = [oneMarginal.table twoMarginal.table threeMarginal.table fourMarginal.table];
 mfMarginals = [oneMarginal twoMarginal.' threeMarginal fourMarginal];
 disp(mfMarginals);
 
 % part C
-joint = condpot(multpots([phi(1), phi(2), phi(3), phi(4), phi(5)]));
-exactMarginals = [sumpot(joint, [2 3 4]).table sumpot(joint, [1 3 4]).table sumpot(joint, [1 2 4]).table sumpot(joint, [1 2 3]).table];
+joint = tmp ./ sum(tmp, 'all');
+exactMarginals = [squeeze(sum(joint, [2 3 4])) squeeze(sum(joint, [1 3 4])).' squeeze(sum(joint, [1 2 4])) squeeze(sum(joint, [1 2 3]))];
 disp(exactMarginals);
 
 % part D
