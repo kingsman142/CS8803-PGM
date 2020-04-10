@@ -1,1 +1,23 @@
 \textbf{Problem 7}
+
+Please run the program ``q7.m'' (I use MATLAB R2020a, but I think MATLAB R2019 should be fine). The minimum KL-divergence value for the optimal $q$ is 0.2293. The values of $q(x, y)$ and $q(z)$ can be found below:
+
+\begin{table}[h]
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		q(x, y) & y = 0  & y = 1  & y = 2  \\ \hline
+		x = 0 & 0.0920 & 0.0217 & 0.1220 \\ \hline
+		x = 1 & 0.1462 & 0.1529 & 0.1360 \\ \hline
+		x = 2 & 0.0936 & 0.1862 & 0.0492 \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[h]
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		& z = 0  & z = 1  & z = 2  \\ \hline
+		q(z) & 0.1145 & 0.4222 & 0.4633 \\ \hline
+	\end{tabular}
+\end{table}
+
+Unfortunately, since there are 3 variables and each has 3 states, the approximated joint distribution $q$ is size 3x3x3 so I cannot print it here, but you can observe it in Matlab if you run ``q7.m''.

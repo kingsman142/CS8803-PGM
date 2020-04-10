@@ -1,1 +1,58 @@
 \textbf{Problem 8}
+
+NOTE: Run ``q8.m'' to display the results for all parts of these questions. The printed results show the loopy marginals, mean-field marginals, exact marginals, and MED values.
+
+a)
+
+The marginals I got using loopy belief propagation are as follows:
+
+\begin{table}[h]
+	\begin{tabular}{|l|l|l|}
+		\hline
+		i & $p(x_i = false)$ & $p(x_i = true)$ \\ \hline 
+		1 & 0.0364 & 0.9636 \\ \hline
+		2 & 0.7064 & 0.2936 \\ \hline
+		3 & 0.4510 & 0.5490 \\ \hline
+		4 & 0.8302 & 0.1698 \\ \hline
+	\end{tabular}
+\end{table}
+
+b)
+
+The marginals I got using variational mean-field equations are as follows:
+
+\begin{table}[h]
+	\begin{tabular}{|l|l|l|}
+		\hline
+		i & $p(x_i = false)$ & $p(x_i = true)$ \\ \hline 
+		1 & 0.0021 & 0.9979 \\ \hline
+		2 & 0.9216 & 0.0784 \\ \hline
+		3 & 0.5668 & 0.4332 \\ \hline
+		4 & 0.8779 & 0.1221 \\ \hline
+	\end{tabular}
+\end{table}
+
+c)
+
+The exact marginals are as follows:
+
+\begin{table}[h]
+	\begin{tabular}{|l|l|l|}
+		\hline
+		i & $p(x_i = false)$ & $p(x_i = true)$ \\ \hline 
+		1 & 0.0325 & 0.9675 \\ \hline
+		2 & 0.7104 & 0.2896 \\ \hline
+		3 & 0.4509 & 0.5491 \\ \hline
+		4 & 0.8292 & 0.1708 \\ \hline
+	\end{tabular}
+\end{table}
+
+d)
+
+The mean expected deviation of the two algorithms are as follows:
+
+$MED_{BP} = 0.002189$
+
+$MED_{MF} = 0.101594$
+
+Mean expected deviation is a sort of similarity metric for the two distributions, one being an approximated distribution of marginals and the other being the true distribution of marginals. As we can see above, since loopy belief has a lower MED, that means loopy belief propagation led to a closer approximation to the true distribution of marginals than the mean-field equations. This is to be expected because of two reasons. First, in the slides, they say the mean field method is a naive approximation that is likely to reach a local maxima, rather than global maxima. The second reason these results make sense is because the mean-field method is an approximation based on minimizing some loss function, but loopy belief propagation is grounded in theory to a very similar exact inference method, which is sum product message passing. The only difference is we randomize messages and allow them to converge over time to the true messages, and once you have the true messages, you are guaranteed to reach the true marginal of a node. As such, from both the quality of the approximation (mean-field achieving local maxima and loopy BP achieving global optimum) and difference in grounding of theory (minimizing a loss vs. being grounded in an exact inference method), it makes sense why loopy belief propagation and mean-field equations would be different. The mean-field method would make more sense if you're concerned about computational resources (the slides say mean-field is mostly kept around because it is simple to implement) but only want a somewhat decent approximation, as you don't need to compute an abundance of message values every iteration. Meanwhile, loopy belief propagation is better in scenarios where we want an accurate approximation, but we aren't as concerned with computational resources.

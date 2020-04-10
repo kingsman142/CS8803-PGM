@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.9.9)  1 APR 2020 18:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.9.9)  9 APR 2020 23:57
 entering extended mode
 **./report.tex
 (report.tex
@@ -682,8 +682,11 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 5.
 
 ("A:\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Overfull \hbox (53.49188pt too wide) in paragraph at lines 49--50
+) [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
+
+
+]
+Overfull \hbox (53.49188pt too wide) in paragraph at lines 51--52
 []\OT1/cmr/m/n/12 We know the tran-si-tion ker-nel is $\OML/cmm/m/it/12 K\OT1/c
 mr/m/n/12 (\OML/cmm/m/it/12 x; x[]\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 p\OT1/cm
 r/m/n/12 (\OML/cmm/m/it/12 x[]\OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 x[]; [] ; x[]\
@@ -693,11 +696,8 @@ y/m/n/12 j\OML/cmm/m/it/12 x[]; x[]; [] ; x[]\OT1/cmr/m/n/12 ) [] \OML/cmm/m/it
 ]; x[]; [] ; x[]\OT1/cmr/m/n/12 )$.
  []
 
-[1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
 
-
-]
-Overfull \hbox (3.0585pt too wide) in paragraph at lines 56--63
+Overfull \hbox (3.0585pt too wide) in paragraph at lines 58--65
 \OT1/cmr/m/n/12 = [] \OML/cmm/m/it/12 p\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]\OM
 S/cmsy/m/n/12 j\OML/cmm/m/it/12 x[]; x[]; [] ; x[]\OT1/cmr/m/n/12 ) [] \OML/cmm
 /m/it/12 p\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]\OMS/cmsy/m/n/12 j\OML/cmm/m/it/
@@ -708,7 +708,7 @@ mm/m/it/12 x[]; x[]; [] ; x[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 p\OT1/cmr/m/n/12
  []
 
 
-Overfull \hbox (36.44034pt too wide) in paragraph at lines 56--63
+Overfull \hbox (36.44034pt too wide) in paragraph at lines 58--65
 \OT1/cmr/m/n/12 = [] \OML/cmm/m/it/12 p\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]\OM
 S/cmsy/m/n/12 j\OML/cmm/m/it/12 x[]; x[]; x[]; [] ; x[]\OT1/cmr/m/n/12 ) [] \OM
 L/cmm/m/it/12 p\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]\OMS/cmsy/m/n/12 j\OML/cmm/
@@ -719,7 +719,7 @@ cmr/m/n/12 (\OML/cmm/m/it/12 x[]\OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 x[]; x[]; []
  []
 
 
-Overfull \hbox (53.13126pt too wide) in paragraph at lines 56--63
+Overfull \hbox (53.13126pt too wide) in paragraph at lines 58--65
 \OT1/cmr/m/n/12 = [] \OML/cmm/m/it/12 p\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]\OM
 S/cmsy/m/n/12 j\OML/cmm/m/it/12 x[]; x[]; x[]; [] ; x[]\OT1/cmr/m/n/12 ) [] \OM
 L/cmm/m/it/12 p\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]\OMS/cmsy/m/n/12 j\OML/cmm/
@@ -739,33 +739,43 @@ cmr/m/n/12 (\OML/cmm/m/it/12 x[]\OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 x[]; x[]; x[
 \openout2 = `problem_3.aux'.
 
  (problem_3.tex
-LaTeX Font Info:    Try loading font information for U+bbm on input line 5.
+<q3-diagrams.jpg, id=44, 3683.7625pt x 1251.67625pt>
+File: q3-diagrams.jpg Graphic file (type jpg)
+ <use q3-diagrams.jpg>
+Package pdftex.def Info: q3-diagrams.jpg used on input line 7.
+(pdftex.def)             Requested size: 368.39783pt x 125.17496pt.
+LaTeX Font Info:    Try loading font information for U+bbm on input line 12.
 
 ("A:\MiKTeX 2.9\tex\latex\bbm\ubbm.fd"
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )) [5
 
 
-]
+ <./q3-diagrams.jpg>]
 \openout2 = `problem_4.aux'.
 
  (problem_4.tex) [6
 
 
-]
+] [7]
 \openout2 = `problem_5.aux'.
 
- (problem_5.tex) [7
+ (problem_5.tex
+Underfull \hbox (badness 10000) in paragraph at lines 11--21
+
+ []
+
+) [8
 
 
 ]
 \openout2 = `problem_6.aux'.
 
- (problem_6.tex [8
+ (problem_6.tex [9
 
 
 ]
-<mh-estimated-means-with-sigma-05-1.png, id=83, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-05-1.png, id=87, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-05-1.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-05-1.png>
@@ -773,7 +783,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-05-1.png used on input l
 ine 64.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-05-2.png, id=85, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-05-2.png, id=89, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-05-2.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-05-2.png>
@@ -781,7 +791,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-05-2.png used on input l
 ine 65.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-05-3.png, id=86, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-05-3.png, id=90, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-05-3.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-05-3.png>
@@ -789,7 +799,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-05-3.png used on input l
 ine 66.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-05-4.png, id=87, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-05-4.png, id=91, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-05-4.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-05-4.png>
@@ -797,7 +807,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-05-4.png used on input l
 ine 67.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-05-5.png, id=88, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-05-5.png, id=92, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-05-5.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-05-5.png>
@@ -805,7 +815,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-05-5.png used on input l
 ine 68.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-05-6.png, id=89, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-05-6.png, id=93, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-05-6.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-05-6.png>
@@ -813,7 +823,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-05-6.png used on input l
 ine 69.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-5-1.png, id=90, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-5-1.png, id=94, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-5-1.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-5-1.png>
@@ -821,7 +831,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-5-1.png used on input li
 ne 76.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-5-2.png, id=91, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-5-2.png, id=95, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-5-2.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-5-2.png>
@@ -829,7 +839,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-5-2.png used on input li
 ne 77.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-5-3.png, id=92, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-5-3.png, id=96, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-5-3.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-5-3.png>
@@ -837,7 +847,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-5-3.png used on input li
 ne 78.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-5-4.png, id=93, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-5-4.png, id=97, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-5-4.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-5-4.png>
@@ -845,7 +855,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-5-4.png used on input li
 ne 79.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-5-5.png, id=94, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-5-5.png, id=98, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-5-5.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-5-5.png>
@@ -853,7 +863,7 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-5-5.png used on input li
 ne 80.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<mh-estimated-means-with-sigma-5-6.png, id=95, 462.528pt x 346.896pt>
+<mh-estimated-means-with-sigma-5-6.png, id=99, 462.528pt x 346.896pt>
 File: mh-estimated-means-with-sigma-5-6.png Graphic file (type png)
 
 <use mh-estimated-means-with-sigma-5-6.png>
@@ -861,73 +871,101 @@ Package pdftex.def Info: mh-estimated-means-with-sigma-5-6.png used on input li
 ne 81.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<gibbs-estimated-means-1.png, id=96, 462.528pt x 346.896pt>
+<gibbs-estimated-means-1.png, id=100, 462.528pt x 346.896pt>
 File: gibbs-estimated-means-1.png Graphic file (type png)
 
 <use gibbs-estimated-means-1.png>
 Package pdftex.def Info: gibbs-estimated-means-1.png used on input line 88.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<gibbs-estimated-means-2.png, id=97, 462.528pt x 346.896pt>
+<gibbs-estimated-means-2.png, id=101, 462.528pt x 346.896pt>
 File: gibbs-estimated-means-2.png Graphic file (type png)
 
 <use gibbs-estimated-means-2.png>
 Package pdftex.def Info: gibbs-estimated-means-2.png used on input line 89.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<gibbs-estimated-means-3.png, id=98, 462.528pt x 346.896pt>
+<gibbs-estimated-means-3.png, id=102, 462.528pt x 346.896pt>
 File: gibbs-estimated-means-3.png Graphic file (type png)
 
 <use gibbs-estimated-means-3.png>
 Package pdftex.def Info: gibbs-estimated-means-3.png used on input line 90.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<gibbs-estimated-means-4.png, id=99, 462.528pt x 346.896pt>
+<gibbs-estimated-means-4.png, id=103, 462.528pt x 346.896pt>
 File: gibbs-estimated-means-4.png Graphic file (type png)
 
 <use gibbs-estimated-means-4.png>
 Package pdftex.def Info: gibbs-estimated-means-4.png used on input line 91.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<gibbs-estimated-means-5.png, id=100, 462.528pt x 346.896pt>
+<gibbs-estimated-means-5.png, id=104, 462.528pt x 346.896pt>
 File: gibbs-estimated-means-5.png Graphic file (type png)
 
 <use gibbs-estimated-means-5.png>
 Package pdftex.def Info: gibbs-estimated-means-5.png used on input line 92.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
-<gibbs-estimated-means-6.png, id=101, 462.528pt x 346.896pt>
+<gibbs-estimated-means-6.png, id=105, 462.528pt x 346.896pt>
 File: gibbs-estimated-means-6.png Graphic file (type png)
 
 <use gibbs-estimated-means-6.png>
 Package pdftex.def Info: gibbs-estimated-means-6.png used on input line 93.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
-) [9] [10 <./mh-estimated-means-with-sigma-05-1.png> <./mh-estimated-means-with
--sigma-05-2.png> <./mh-estimated-means-with-sigma-05-3.png> <./mh-estimated-mea
-ns-with-sigma-05-4.png> <./mh-estimated-means-with-sigma-05-5.png> <./mh-estima
-ted-means-with-sigma-05-6.png>] [11 <./mh-estimated-means-with-sigma-5-1.png> <
-./mh-estimated-means-with-sigma-5-2.png> <./mh-estimated-means-with-sigma-5-3.p
-ng> <./mh-estimated-means-with-sigma-5-4.png> <./mh-estimated-means-with-sigma-
-5-5.png> <./mh-estimated-means-with-sigma-5-6.png>] [12 <./gibbs-estimated-mean
-s-1.png> <./gibbs-estimated-means-2.png> <./gibbs-estimated-means-3.png> <./gib
-bs-estimated-means-4.png> <./gibbs-estimated-means-5.png> <./gibbs-estimated-me
-ans-6.png>]
+) [10] [11 <./mh-estimated-means-with-sigma-05-1.png> <./mh-estimated-means-wit
+h-sigma-05-2.png> <./mh-estimated-means-with-sigma-05-3.png> <./mh-estimated-me
+ans-with-sigma-05-4.png> <./mh-estimated-means-with-sigma-05-5.png> <./mh-estim
+ated-means-with-sigma-05-6.png>] [12 <./mh-estimated-means-with-sigma-5-1.png> 
+<./mh-estimated-means-with-sigma-5-2.png> <./mh-estimated-means-with-sigma-5-3.
+png> <./mh-estimated-means-with-sigma-5-4.png> <./mh-estimated-means-with-sigma
+-5-5.png> <./mh-estimated-means-with-sigma-5-6.png>] [13 <./gibbs-estimated-mea
+ns-1.png> <./gibbs-estimated-means-2.png> <./gibbs-estimated-means-3.png> <./gi
+bbs-estimated-means-4.png> <./gibbs-estimated-means-5.png> <./gibbs-estimated-m
+eans-6.png>]
 \openout2 = `problem_7.aux'.
 
- (problem_7.tex) [13
+ (problem_7.tex) [14
 
 
 ]
 \openout2 = `problem_8.aux'.
 
 
-(problem_8.tex) [14
+(problem_8.tex) [15
 
 
-]
+] [16]
 \openout2 = `problem_9.aux'.
 
- (problem_9.tex) [15
+ (problem_9.tex
+Underfull \hbox (badness 10000) in paragraph at lines 11--20
+
+ []
+
+
+Overfull \hbox (26.49106pt too wide) in paragraph at lines 21--22
+[]\OT1/cmr/m/n/12 Now, we know KL-divergence is non-negative, so $\OML/cmm/m/it
+/12 KL\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 q\OMS/cmsy/m/n/12 jj\OML/cmm/m/it/12 r\
+OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 0$, which also means $\OML/
+cmm/m/it/12 KL\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 q\OT1/cmr/m/n/12 (\OML/cmm/m/it
+/12 x\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 jj\OML/cmm/m/it/12 p\OT1/cmr/m/n/12 (\OM
+L/cmm/m/it/12 x\OT1/cmr/m/n/12 )) \OMS/cmsy/m/n/12  
+ []
+
+
+Overfull \hbox (25.20409pt too wide) in paragraph at lines 28--29
+[]\OT1/cmr/m/n/12 In part (a), we showed $\OML/cmm/m/it/12 J \OMS/cmsy/m/n/12 
+  \OML/cmm/m/it/12 KL\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 q\OT1/cmr/m/n/12 (\OML/c
+mm/m/it/12 x\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 jj\OML/cmm/m/it/12 p\OT1/cmr/m/n/
+12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )) + \OMS/cmsy/m/n/12 h[] \OML/cmm/m/it/1
+2 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 i[]$\OT
+1/cmr/m/n/12 . We will show $\OML/cmm/m/it/12 J \OMS/cmsy/m/n/12   \OML/cmm/m/
+it/12 KL\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 q\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\
+OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 jj\OML/cmm/m/it/12 p\OT1/cmr/m/n/12 (\OML/cmm/
+m/it/12 x\OT1/cmr/m/n/12 )) \OMS/cmsy/m/n/12  
+ []
+
+) [17
 
 
 ] 
@@ -943,26 +981,27 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 16377 strings out of 493320
- 297265 string characters out of 3145002
- 386634 words of memory out of 3000000
- 19511 multiletter control sequences out of 15000+200000
+ 16382 strings out of 493320
+ 297372 string characters out of 3145002
+ 386675 words of memory out of 3000000
+ 19516 multiletter control sequences out of 15000+200000
  9608 words of font info for 38 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 54i,11n,73p,1536b,331s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 54i,11n,73p,1855b,331s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\kingsman142\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\bbm\dp
 i600\bbm12.pk><A:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><A:/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><A:/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmex10.pfb><A:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.
-pfb><A:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><A:/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmmi8.pfb><A:/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmr12.pfb><A:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><A:/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><A:/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb><A:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-
-Output written on report.pdf (15 pages, 494898 bytes).
+ic/amsfonts/cm/cmex10.pfb><A:/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cm
+ex8.pfb><A:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><A:/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmmi6.pfb><A:/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmmi8.pfb><A:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><A:/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><A:/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmr8.pfb><A:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10
+.pfb><A:/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><A:/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on report.pdf (17 pages, 1526302 bytes).
 PDF statistics:
- 202 PDF objects out of 1000 (max. 8388607)
- 32 named destinations out of 1000 (max. 500000)
- 103 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 217 PDF objects out of 1000 (max. 8388607)
+ 30 named destinations out of 1000 (max. 500000)
+ 108 words of extra memory for PDF output out of 10000 (max. 10000000)
 

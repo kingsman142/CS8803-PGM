@@ -1,1 +1,36 @@
 \textbf{Problem 9}
+
+a)
+
+We know $r(x) = \frac{p(x)f(x)}{\int_x p(x)f(x)}$
+
+We also know $J = log\left[\int_x p(x)f(x)\right]$
+
+So, we can show the following:
+
+$KL(q \vert\vert r) \\
+= \int_x q(x)\log\frac{q(x)}{r(x)} \\
+= \int_x q(x)\log\frac{q(x)\int_x p(x)f(x)}{p(x)f(x)} \\
+= \int_x q(x)\log\frac{q(x)}{p(x)} + \int_x q(x)\log\frac{\int_x p(x)f(x)}{\log f(x)} \\
+= \int_x q(x)\log\frac{q(x)}{p(x)} + \int_x q(x)\log\left[\int_x p(x)f(x)\right] - \int_x q(x)\log f(x) \\
+= \int_x q(x)\log\frac{q(x)}{p(x)} - \int_x q(x)\log f(x) + \int_x q(x)\log\left[\int_x p(x)f(x)\right]\\
+= KL(q(x) \vert\vert p(x)) - \langle\log f(x)\rangle_{q(x)} + \int_x q(x)J \\
+= KL(q(x) \vert\vert p(x)) - \langle\log f(x)\rangle_{q(x)} + J\int_x q(x) \\
+= KL(q(x) \vert\vert p(x)) - \langle\log f(x)\rangle_{q(x)} + J \\$
+
+Now, we know KL-divergence is non-negative, so $KL(q \vert\vert r) \geq 0$, which also means $KL(q(x) \vert\vert p(x)) - \langle\log f(x)\rangle_{q(x)} + J \geq 0$. As such, we can use this knowledge to show the following:
+
+$KL(q(x) \vert\vert p(x)) - \langle\log f(x)\rangle_{q(x)} + J \geq 0 \\
+\implies J \geq -KL(q(x) \vert\vert p(x)) + \langle\log f(x)\rangle_{q(x)} \qquad\qed$
+
+b)
+
+In part (a), we showed $J \geq -KL(q(x) \vert\vert p(x)) + \langle\log f(x)\rangle_{q(x)}$. We will show $J \geq -KL(q(x) \vert\vert p(x)) - KL(q(x) \vert\vert f(x)) - H(q(x))$ using the previous knowledge:
+
+$J \geq -KL(q(x) \vert\vert p(x)) + \langle\log f(x)\rangle_{q(x)} \\
+\implies J \geq -KL(q(x) \vert\vert p(x)) + \int_x q(x)\log f(x) \\
+\implies J \geq -KL(q(x) \vert\vert p(x)) + \int_x q(x)\log\frac{f(x)q(x)}{q(x)} \\
+\implies J \geq -KL(q(x) \vert\vert p(x)) + \int_x q(x)\log\left[q(x)\frac{f(x)}{q(x)}\right] \\
+\implies J \geq -KL(q(x) \vert\vert p(x)) + \int_x q(x)\log\frac{f(x)}{q(x)} + \int_x q(x)\log q(x) \\
+\implies J \geq -KL(q(x) \vert\vert p(x)) - \int_x q(x)\log\frac{q(x)}{f(x)} + \int_x q(x)\log q(x) \\
+\implies J \geq -KL(q(x) \vert\vert p(x)) - KL(q(x) \vert\vert f(x)) - H(q(x)) \qquad\qed $

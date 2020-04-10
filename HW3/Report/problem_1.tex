@@ -29,7 +29,9 @@ c) The transition probability of MH is as follows:
 
 $p(x \rightarrow x') = q(x' \vert x)A(x', x)$
 
-$A(x, x_t) = min(1, \frac{\tilde{p}(x)q(x_t \vert x)}{\tilde{p}(x_t)q(x \vert x_t)})$
+On a side note, before we start the proof, please know the question states $\tilde{p}(x)$ is the unnormalized target distribution, so $\frac{p(x)}{p(x')} = \frac{\tilde{p}(x)}{\tilde{p}(x')}$. We such, we get the following:
+
+$A(x, x_t) = min(1, \frac{p(x)q(x_t \vert x)}{p(x_t)q(x \vert x_t)})$
 
 So, we have the following:
 

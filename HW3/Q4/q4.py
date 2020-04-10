@@ -9,10 +9,15 @@ b = data_file["b"] # 200x1 double
 p = data_file["p"].flatten() # 50x1 double
 s = data_file["s"] # 200x1 logical
 
-BURNIN = 300
+BURNIN = 100
 SUBSAMPLING_RATE = 5
+SUBSAMPLING_ITERATIONS = 300
 NUM_DISEASES = len(p)
 NUM_SYMPTOMS = len(W)
+
+print("BURNIN: {}".format(BURNIN))
+print("SUBSAMPLING RATE: {}".format(SUBSAMPLING_RATE))
+print("SUBSAMPLING ITERATIONS: {}".format(SUBSAMPLING_ITERATIONS))
 
 def sigmoid(x):
   return 1 / (1 + np.exp(-x))
@@ -58,19 +63,19 @@ curr_probs = [0] * NUM_DISEASES # init value
 probs = [0 for i in range(NUM_DISEASES)]
 counts = [0] * NUM_DISEASES
 
-for i in range(BURNIN):
+for i in range(BURNIN + SUBSAMPLING_ITERATIONS):
+    if i == 0 or i % 50 == 0:
+        print("Finished iteration {}/{}".format(i+1, BURNIN + SUBSAMPLING_ITERATIONS))
     random_index = int(np.random.choice(NUM_DISEASES, size = 1))#i % NUM_DISEASES
     new_val, _ = get_random_sample_and_prob(s, curr_probs, W, b, random_index, p)
     curr_probs[random_index] = new_val
 
-    if i % SUBSAMPLING_RATE == 0:
+    if i >= BURNIN and i % SUBSAMPLING_RATE == 0:
         for j in range(NUM_DISEASES):
             _, marginal = get_random_sample_and_prob(s, curr_probs, W, b, j, p)
             probs[j] += marginal
             counts[j] += 1
 
 print(curr_probs)
-#for i in range(NUM_DISEASES):
-#    _, probs[i] = get_random_sample_and_prob(s, curr_probs, W, b, i, p)
 probs = [round(probs[i] / counts[i], 4) for i in range(NUM_DISEASES)]
 print(probs)

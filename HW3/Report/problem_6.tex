@@ -6,7 +6,7 @@ a) Run ``python3 q6.py'' to run one simulation of the program. You must install 
 
 b) Results can be seen in Tables \ref{mh-table-05}, \ref{mh-table-5}, as well as Figures \ref{mh-figure-05}, \ref{mh-figure-5}. While both values of $\sigma$ produce the correct estimated means (-5 and 5), their acceptance rates are vastly different. With $\sigma = 0.5$, we get an acceptance rate of 0.1303. Meanwhile, with $\sigma = 5$, we get acceptance rate 0.0025. This makes sense since with a smaller value of $\sigma$, the random walk of the MH algorithm (which is produced by the proposal distribution) leads us to making smaller steps. Meanwhile, when the value of $\sigma$ is larger, those steps are going to be larger at each iteration, which means there is a higher chance of making a step in the wrong direction, thus leading to a larger rejection rate by the algorithm. Basically, smaller $\sigma$ means smaller, more precise, and subsequently more confident steps.
 
-c) Results can be seen in Table \ref{gibbs-table} and Figure \ref{gibbs-figure}. The estimated mean is roughly where it should be (-5 and 5).
+c) Results can be seen in Table \ref{gibbs-table} and Figure \ref{gibbs-figure}. The estimated means are roughly where they should be (-5 and 5).
 
 \pagebreak \begin{table}[h]
 	\centering

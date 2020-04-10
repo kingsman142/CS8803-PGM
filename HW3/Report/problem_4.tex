@@ -1,1 +1,42 @@
 \textbf{Problem 4}
+
+Please execute the following command to run the python program: ``python3 q4.py''. Both numpy and scipy are required to run the program. Install them with the command ``pip3 install numpyp scipy''. I used a burn-in of 100, subsampling rate of 5, and I sample from 300 iterations after the burn-in rate ends. The values of the marginals I found are found below in Table \ref{disease-marginals}. Please keep in mind students will find different disease marginals depending on their burnin and subsampling rate.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|l|l||l|l|}
+		\hline
+		i  & $p(d_i = 1 \vert s)$ & i  & $p(d_i = 1 \vert s)$ \\ \hline
+		1 & 0.0338 & 26 & 0.9993 \\ \hline
+		2 & 0.9995 & 27 & 0.0105 \\ \hline
+		3 & 0.0250 & 28 & 0.0005 \\ \hline
+		4 & 1.0000 & 29 & 0.9916 \\ \hline
+		5 & 0.6454 & 30 & 0.0000 \\ \hline
+		6 & 0.0180 & 31 & 0.0000 \\ \hline
+		7 & 0.0258 & 32 & 0.1452 \\ \hline
+		8 & 0.0008 & 33 & 0.0085 \\ \hline
+		9 & 0.0098 & 34 & 1.0000 \\ \hline
+		10 & 1.0000 & 35 & 0.0000 \\ \hline
+		11 & 0.0033 & 36 & 0.0007 \\ \hline
+		12 & 1.0000 & 37 & 0.9443 \\ \hline
+		13 & 1.0000 & 38 & 0.0015 \\ \hline
+		14 & 1.0000 & 39 & 0.0000 \\ \hline
+		15 & 0.9877 & 40 & 0.0006 \\ \hline
+		16 & 0.8546 & 41 & 0.9091 \\ \hline
+		17 & 0.9865 & 42 & 0.9936 \\ \hline
+		18 & 0.7478 & 43 & 1.0000 \\ \hline
+		19 & 0.9889 & 44 & 0.9995 \\ \hline
+		20 & 0.9949 & 45 & 0.0001 \\ \hline
+		21 & 0.0527 & 46 & 0.0049 \\ \hline
+		22 & 0.8583 & 47 & 0.9993 \\ \hline
+		23 & 0.9998 & 48 & 0.9902 \\ \hline
+		24 & 0.9059 & 49 & 0.0000 \\ \hline
+		25 & 0.0082 & 50 & 0.9649 \\ \hline
+	\end{tabular}
+	\caption{Disease marginals}
+	\label{disease-marginals}
+\end{table}
+
+After my simulations, I predict the true/false disease vector as [0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1].
+
+It is important to note students will receive different answers for their marginals based on 1) their number of burn-in iterations, 2) their subsampling rate, 3) the number of iterations they carry out after burn-in, and 4) due to randomness of which $d_i$ is sampled at each iteration (I choose a random $d_i$ while others might calculate $i$ as the modulo of the iteration by the number of diseases, which is more deterministic). As such, please keep an open mind with these results and do not grade too harshly on the exact marginal numbers.
