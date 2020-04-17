@@ -1,0 +1,41 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{accents}
+\usepackage{url}
+\usepackage[colorlinks]{hyperref}
+\usepackage{changepage}
+\usepackage{booktabs}
+\usepackage[none]{hyphenat}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{bbm}
+\pagestyle{fancy}
+\setlength{\headheight}{40pt}
+
+\newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\begin{document}
+
+\lhead{Homework \#4 \\ \textbf{Student name: James Hahn} }
+\rhead{CS8803 - PGM \\ Probabilistic Graphical Models} 
+\cfoot{\thepage\ of \pageref{LastPage}}
+\noindent
+
+\include{problem_1}
+\include{problem_2}
+\include{problem_3}
+\include{problem_4}
+\include{problem_5}
+\include{problem_6}
+
+\end{document}
