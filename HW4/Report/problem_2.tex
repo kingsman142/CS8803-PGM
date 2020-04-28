@@ -1,1 +1,41 @@
 \pagebreak\textbf{Problem 2}
+
+We have the ``younger than 60'' samples as follows: 0110 and 1110.
+
+We have the ``older than 60'' samples as follows: 1000, 1001, 1111, 0001.
+
+We produce MLE estimates of the probabilities as follows: \\
+
+P(cornflakes $\vert$ younger than 60) = $\frac{1}{2}$ = 0.5
+
+P(frosties $\vert$ younger than 60) = $\frac{2}{2}$ = 1.0
+
+P(sugar puss $\vert$ younger than 60) = $\frac{2}{2}$ = 1.0
+
+P(branflakes $\vert$ younger than 60) = $\frac{0}{2}$ = 0.0
+
+P(younger than 60) = $\frac{2}{6}$ = $\frac{1}{3}$ \\
+
+P(cornflakes $\vert$ older than 60) = $\frac{3}{4}$ = 0.75
+
+P(frosties $\vert$ older than 60) = $\frac{1}{4}$ = 0.25
+
+P(cornflakes $\vert$ older than 60) = $\frac{1}{4}$ = 0.25
+
+P(branflakes $\vert$ older than 60) = $\frac{3}{4}$ = 0.75
+
+P(older than 60) = $\frac{4}{6}$ = $\frac{2}{3}$ \\
+
+So, we get the following probabilities of the sample 0110 belonging to each class as the following:
+
+P(younger than 60 $\vert$ 0110) = P(not cornflakes $\vert$ younger than 60)P(frosties $\vert$ younger than 60)P(sugar puss $\vert$ younger than 60)P(not branflakes $\vert$ younger than 60)P(younger than 60) = 0.5(1)(1)(1)$\frac{1}{3}$ = $\frac{1}{6}$ = 0.1667
+
+P(older than 60 $\vert$ 0110) = P(not cornflakes $\vert$ older than 60)P(frosties $\vert$ older than 60)P(sugar puss $\vert$ older than 60)P(not branflakes $\vert$ older than 60)P(older than 60) = 0.25(0.25)(0.25)(0.25)$\frac{2}{3}$ = $\frac{2}{768}$ = 0.0026
+
+So, after normalizing the probabilities, we get:
+
+P(younger than 60 $\vert$ 0110) = $\frac{\text{P(younger than 60 $\vert$ 0110)}}{\text{P(younger than 60 $\vert$ 0110)} + \text{P(older than 60 $\vert$ 0110)}}$ = 0.984615
+
+P(older than 60 $\vert$ 0110) = $\frac{\text{P(older than 60 $\vert$ 0110)}}{\text{P(younger than 60 $\vert$ 0110)} + \text{P(older than 60 $\vert$ 0110)}}$ = 0.015385
+
+As such, the probability that she is younger than 60 is \textbf{0.9846}.

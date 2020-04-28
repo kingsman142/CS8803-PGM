@@ -1,1 +1,21 @@
 \textbf{Problem 4}
+
+With a Naive Bayes classifier, we classify a sample to class 1, as opposed to class 0, if the following condition holds (let $y$ represent ``class''):
+
+$\frac{P(y = 1\vert x)}{P(y = 0 \vert x)} > 1$
+
+As such, we can expand this as follows:
+
+$\frac{P(y = 1\vert x)}{P(y = 0 \vert x)} > 1 \\
+\implies \log\frac{P(y = 1\vert x)}{P(y = 0 \vert x)} > \log(1) \\
+\implies \log P(y = 1\vert x) - \log P(y = 0 \vert x) > 0 \\
+\implies \log P(x \vert y = 1)P(y = 1) - \log P(x \vert y = 0)P(y = 0) > 0 \\
+\implies \log P(x \vert y = 1) + \log P(y = 1) - \log P(x \vert y = 0) - \log P(y = 0) > 0 \\
+\implies (\log P(x \vert y = 1) - \log P(x \vert y = 0)) + (\log P(y = 1) - \log P(y = 0)) > 0 \\
+\implies (\sum_{i = 1}^{M} x_i\log(\theta_i^1) - \sum_{i = 1}^{M} x_i\log(\theta_i^0)) + (\log P(y = 1) - \log P(y = 0)) > 0 \\
+\implies (\log(\theta^1) - \log(\theta^0))^Tx + (\log P(y = 1) - \log P(y = 0)) > 0 \\
+\implies w^Tx + b > 0$
+
+As we can see from the above equations, the decision to classify a data point x as class 1 holds if $w^Tx + b > 0$ for some w and b.
+
+Specifically, $w = (\log(\theta^1) - \log(\theta^0))$ and $b = (\log P(y = 1) - \log P(y = 0))$. $\qquad\qed$

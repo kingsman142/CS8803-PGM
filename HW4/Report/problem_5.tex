@@ -1,1 +1,93 @@
 \textbf{Problem 5}
+
+1) 
+
+We will derive expressions for the parameters of this model in terms of the training data using maximum likelihood. We have the following:
+
+$P(c^1, \dots, c^N, x^1, \dots, x^N) \\
+= \prod_{i = 1}^N P(c^i, x^i) \\
+= \prod_{i = 1}^{N} \left[ P(c^i)\prod_{j = 1}^{D}P(x_j^i \vert c^i) \right]$
+
+If we take the log probability to calculate the MLE, we get:
+
+$\log P(c^1, \dots, c^N, x^1, \dots, x^N) \\
+= \sum_{i = 1}^N \log \left[ P(c^i)\prod_{j = 1}^{D}P(x_j^i \vert c^i) \right] \\
+= \sum_{i = 1}^N \left[ \log P(c^i) + \sum_{j = 1}^{D}\log P(x_j^i \vert c^i) \right] \\
+= \sum_{i = 1}^N \log P(c^i) + \sum_{i = 1}^{N}\sum_{j = 1}^{D}\log P(x_j^i \vert c^i) = L \\$
+
+As such, to solve this optimization problem, we need to maximize L subject to:
+
+$\sum_{i \in \{0, 1\}} P(c^i) = 1 \\
+\sum_{w \in \{0, 1\}}^D P(x_j^i = w) = 1 \thinspace\thinspace\thinspace \forall i = 1, \dots, C \text{ and } \forall j = 1, \dots, D$\\
+
+\textbf{Claim.} To solve this greater proof, we first must show the MLE estimate $p_i$ of a multinomial distribution is $p_i = \frac{c_i}{N}$:
+
+A multinomial distribution is defined as $P(x_1, \dots, x_k \vert p_1, \dots, p_k) = \frac{n!}{\prod_{i = 1}^{K} x_i!}\prod_{i = 1}^{K} p_i^{x_i}$. As such, we get the following:
+
+$\log P(x_1, \dots, x_k \vert p_1, \dots, p_k) \\
+= \log(n!) - \log(\prod_{i = 1}^{K} x_i!) + \log(\prod_{i = 1}^{K} p_i^{x_i}) \\
+= \log(n!) - \sum_{i = 1}^{K}\log(x_i!) + \sum_{i = 1}^{K}\log(p_i^{x_i})$
+
+Then we get the following:
+
+$\argmax_p \log P(x \vert p) \\
+= \argmax_p \sum_{i = 1}^{K} \log(p_i^{x_i}) \\
+= \argmax_p \sum_{i = 1}^{K} x_i\log(p_i)$
+
+So, to get the MLE estimate of the multinomial distribution, we must solve the following optimization problem:
+
+maximize $\sum_{y \in Y} c_y \log(p_y)$
+
+s.t. $p_i \geq 0 \thinspace\thinspace\thinspace \forall i$
+
+$\qquad \sum_{w \in \{0, 1\}} P(x_j^i = w) = 1 \thinspace\thinspace\thinspace \forall i = 1, \dots, C \text{ and } \forall j = 1, \dots, D$
+
+We can solve this using the lagrangian: $g(\lambda, p) = \sum_{y \in Y} c_y\log(p_y) - \lambda(\sum_{y \in Y} p_y - 1)$. We get the following:
+
+$\frac{\delta g(\lambda, p)}{\delta p_i} = \frac{c_i}{p_i} - \lambda \\
+\implies \frac{c_i}{p_i} - \lambda = 0 \qquad$ (Setting derivative to 0) \\
+$\implies p_i = \frac{c_i}{\lambda} \\
+\implies p_i = \frac{c_i}{\sum_{y \in Y} c_y} \qquad$ (Normalizing to sum to 1 due to its constraint) \\
+$\implies p_i = \frac{c_i}{N}$ \textbf{(*)}
+
+As such, we have shown the MLE of a multinomial distribution is $p_i = \frac{c_i}{N}$. $\qquad\qed$
+
+Now, to solve the remaining proof for the MLE of Naive Bayes. Earlier, we showed the log-likelihood for the MLE estimates was $L = \sum_{i = 1}^N \log P(c^i) + \sum_{i = 1}^{N}\sum_{j = 1}^{D}\log P(x_j^i \vert c^i)$. We will reduce the log-likelihood even further:
+
+$L = \sum_{i = 1}^N \log P(c^i) + \sum_{i = 1}^{N}\sum_{j = 1}^{D}\log P(x_j^i \vert c^i) \\
+= \sum_{y \in \{0, 1\}} \text{count}(c_y)\log P(c_y) + \sum_{j = 1}^{D}\sum_{y \in \{0, 1\}}\sum_{w \in \{0, 1\}}\text{count}(x_j = w \vert c_y)\log P(x_j = w \vert c_y)$
+
+In the above, $\text{count}(c_i) = \sum_{j = 1}^N I[c^j = c_i]$ and $\text{count}(x_j = w \vert c_y) = \sum_{i = 1}^M I[c^i = c_y \text{ and } x_j^i = w]$.
+
+Now, since we have simplified the log-likelihood to a summation of two terms, we can see in order to maximize the log-likelihood, we want to maximize each term.
+
+To maximize the first term, we see it is in the form of the multinomial distribution optimization problem as shown above, so by (*) the MLE estimate is $P(c_i) = \frac{\text{count}(c_i)}{N}$.
+
+To maximize the second term, we also see it is in the form of the multinomial distribution optimization problem, so by (*) the MLE estimate is $P(x_i = x \vert c_i) = \frac{\text{count}(x_i = x \vert c_i)}{\sum_{w \in \{0, 1\}} \text{count}(x_i = w \vert c_i)}$.
+
+In the above two sentences, we have derived expressions in order to calculate the parameters of this Naive Bayes model using the MLE. $\qquad \qed$
+
+2) 
+
+To form the classifier $p(c \vert x)$, we can do the following:
+
+$p(c \vert x) \\
+= p(x \vert c)p(c) \\
+= p(x_i, \dots, x_n \vert c)p(c) \\
+= p(x_i \vert c)\dots p(x_n \vert c)p(c) \qquad$ (Due to feature independence assumption of naive bayes) \\
+
+So, we simply need to use the parameters of the model, as calculated in part (1), and with help from the feature independence assumption of naive bayes, multiply the probabilities of a sample's features together to get its final class probability.
+
+Then, assuming there are two classes, we can calculate $p(c = 0 \vert x)$ and $p(c = 1 \vert x)$ and assign the sample to the class with the higher probability.
+
+3)
+
+Since `viagra' never appears in the spam training data, we will assign a probability of 0 to it. This means, given a test sample, $p(x_i = \text{viagra} \vert c) = 0$. Since we multiply that 0 probability with the probability of all the other features, the final probability of the sample belonging to either class will be 0. Obviously, we cannot assign a 0 probability of the sample belonging to both classes.
+
+To counter this effect, we need to add smoothing through add-1 smoothing. This is a very common practice in natural language processing and slightly modifies the way the parameters of the model are computed. In essence, it assigns slightly higher probabilities to words/features with few or zero counts, and slightly reduces the probability of more common words/features in the samples. So, it smooths the distribution across all features and can be computed as follows:
+
+$P(x_i \vert c) = \frac{\text{count}(x_i \vert c) + 1}{\vert V \vert + \sum_{x_w \in V} \text{count}(x_w \vert c)}$
+
+Please note, this above notation is a bit specific to the language domain. As such, w represents a word within the vocabulary, V represents the vocabulary of the samples, and $\vert V \vert$ represents the cardinality of the vocabulary.
+
+One way a spammer might try to fool a naive bayes spam filter is to estimate the distribution of words in the training data. They can do this by registering an account with the email service provider and sending emails to themself. Then, since the email service provider automatically tags which emails are spam or not, the attacker/spammer can compute the distribution of words within each class. Once they know the distribution of words in spam/non-spam, they can create a normal spam email as they normally would, but then fill the email footer with tiny font with the appropriate count of non-spam word to match the training distribution. As such, the the spam filter will read across the entire email, including the email footer, see there are far more non-spam words than spam words (which all happen to be located in the footer), and classify the email as non-spam.

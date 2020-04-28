@@ -1,3 +1,25 @@
 \textbf{Problem 1}
 
-Yes. Since all data was drawn from a distribution parameterized by $\theta^0$, and we are measuring the likelihood of the data given those parameters (i.e. maximum likelihood), then since the loss is the log-likelihood of the data, the data will  be most likely at the parameters $\theta^0$ which parameterize the distributions. As such, $\theta^0$ will be an optimum.
+Through the proof shown at \url{https://en.wikipedia.org/wiki/Maximum\_likelihood\_estimation#Relation\_to\_minimizing\_Kullback\%E2\%80\%93Leibler_divergence_and_cross_entropy}, we know finding $\theta$ that maximizes likelihood is equivalent to finding $\argmin_\theta D_{KL}(P_\theta \vert\vert P_{\theta^0})$.
+
+As such, we want $\argmin_\theta D_{KL}(P_\theta \vert\vert P_{\theta^0}) = \argmin_\theta \sum_{i=1}^{N} P(y^i \vert x^i, \theta)\log\frac{P(y^i \vert x^i, \theta)}{P(y^i \vert x^i, \theta^0)}$
+
+By definition of a distance metric, the minimum distance is 0.
+
+To get distance 0, we need the value in the logarithm to be 1. In other words:
+
+$\frac{P(y^i \vert x^i, \theta)}{P(y^i \vert x^i, \theta^0)} = 1 \\
+\implies \log\frac{P(y^i \vert x^i, \theta)}{P(y^i \vert x^i, \theta^0)} = 0 \\ \implies P(y^i \vert x^i, \theta)\log\frac{P(y^i \vert x^i, \theta)}{P(y^i \vert x^i, \theta^0)} = 0 \\
+\implies \sum_{i=1}^{N} P(y^i \vert x^i, \theta)\log\frac{P(y^i \vert x^i, \theta)}{P(y^i \vert x^i, \theta^0)} = 0$
+
+As such, if we have $\theta = \theta^0$, then we compute the KL-divergence distance as so:
+
+$D_{KL}(P_\theta \vert\vert P_{\theta^0}) \\
+= \sum_{i=1}^{N} P(y^i \vert x^i, \theta)\log\frac{P(y^i \vert x^i, \theta)}{P(y^i \vert x^i, \theta^0)} \\
+= \sum_{i=1}^{N} P(y^i \vert x^i, \theta^0)\log\frac{P(y^i \vert x^i, \theta^0)}{P(y^i \vert x^i, \theta^0)} \\
+= \sum_{i=1}^{N} P(y^i \vert x^i, \theta^0)\log 1 \\
+= \sum_{i=1}^{N} P(y^i \vert x^i, \theta^0)(0) \\
+= \sum_{i=1}^{N} 0 \\
+= 0 $
+
+As such, when $\theta = \theta^0$, we achieve the minimum KL-divergence possible, which is an optimum by definition. $\qquad\qed$.

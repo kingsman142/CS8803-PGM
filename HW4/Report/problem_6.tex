@@ -1,1 +1,102 @@
 \textbf{Problem 6}
+
+You can run my program by executing ``q6.m''. The CPTs found using EM are as follows:
+
+\begin{table}[h]
+	\begin{tabular}{|c|c|}
+		\hline
+		P(fuse = false) & P(fuse = true) \\ \hline
+		0.6042 & 0.3958 \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[h]
+	\begin{tabular}{|c|c|}
+		\hline
+		P(drum = false) & P(drum = true) \\ \hline
+		0.6150 & 0.3850 \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[h]
+	\begin{tabular}{|c|c|}
+		\hline
+		P(toner = false) & P(toner = true) \\ \hline
+		0.6093 & 0.3907 \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+	\begin{tabular}{|c|c|}
+		\hline
+		P(paper = false) & P(paper = true) \\ \hline
+		0.3443 & 0.6557 \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+	\begin{tabular}{|c|c|}
+		\hline
+		P(roller = false) & P(roller = true) \\ \hline
+		0.6964 & 0.3036 \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+	\begin{tabular}{|c|c|c|}
+		\hline
+		& P(burning = false) & P(burning = true) \\ \hline
+		fuse = false & 0.9998 & 0.0001 \\ \hline
+		fuse = true & 0.4863 & 0.5137 \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+	\begin{tabular}{|c|c|c|}
+		\hline
+		& P(quality = false) & P(quality = true) \\ \hline
+		drum = false, toner = false, paper = false & 0.9995 & 0.0005 \\ \hline
+		drum = false, toner = false, paper = true & 0.9945 & 0.0055 \\ \hline
+		drum = false, toner = true, paper = false & 0.0463 & 0.9537 \\ \hline
+		drum = false, toner = true, paper = true & 0.0045 & 0.9955 \\ \hline
+		drum = true, toner = false, paper = false & 0.0022 & 0.9978 \\ \hline
+		drum = true, toner = false, paper = true & 0.0084 & 0.9916 \\ \hline
+		drum = true, toner = true, paper = false & 0.0010 & 0.9990 \\ \hline
+		drum = true, toner = true, paper = true & 0.0007 & 0.9993 \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+	\begin{tabular}{|c|c|c|}
+		\hline
+		& P(wrinkled = false) & P(wrinkled = true) \\ \hline
+		fuse = false, paper = false & 0.9973 & 0.0027 \\ \hline
+		fuse = false, paper = true & 0.8987 & 0.1013 \\ \hline
+		fuse = true, paper = false & 0.4815 & 0.5185 \\ \hline
+		fuse = true, paper = true & 0.0008 & 0.9992 \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+	\begin{tabular}{|c|c|c|}
+		\hline
+		& P(mult.pages = false) & P(mult.pages = true) \\ \hline
+		paper = false, roller = false & 0.9996 & 0.0004 \\ \hline
+		paper = false, roller = true & 0.4635 & 0.5365 \\ \hline
+		paper = true, roller = false & 0.6943 & 0.3057 \\ \hline
+		paper = true, roller = true & 0.3110 & 0.6890 \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+	\begin{tabular}{|c|c|c|}
+		\hline
+		& P(paper jam = false) & P(paper jam = true) \\ \hline
+		fuse = false, roller = false & 0.6067 & 0.3933 \\ \hline
+		fuse = false, roller = true & 0.0011 & 0.9989 \\ \hline
+		fuse = true, roller = false & 0.3756 & 0.6244 \\ \hline
+		fuse = true, roller = true & 0.0069 & 0.9931 \\ \hline
+	\end{tabular}
+\end{table}
+
+\pagebreak Using the computed CPTs, given no wrinkled pages, no burning smell, and poor print quality, the probability there is a drum unit problem is \textbf{0.0031}.
