@@ -12,10 +12,18 @@ $\frac{P(y = 1\vert x)}{P(y = 0 \vert x)} > 1 \\
 \implies \log P(x \vert y = 1)P(y = 1) - \log P(x \vert y = 0)P(y = 0) > 0 \\
 \implies \log P(x \vert y = 1) + \log P(y = 1) - \log P(x \vert y = 0) - \log P(y = 0) > 0 \\
 \implies (\log P(x \vert y = 1) - \log P(x \vert y = 0)) + (\log P(y = 1) - \log P(y = 0)) > 0 \\
-\implies (\sum_{i = 1}^{M} x_i\log(\theta_i^1) - \sum_{i = 1}^{M} x_i\log(\theta_i^0)) + (\log P(y = 1) - \log P(y = 0)) > 0 \\
-\implies (\log(\theta^1) - \log(\theta^0))^Tx + (\log P(y = 1) - \log P(y = 0)) > 0 \\
+\implies (\sum_{i = 1}^{N} \left[ x_i\log(\theta_i^1) + (1 - x_i)\log(1-\theta_i^1) \right] - \sum_{i = 1}^{N} \left[ x_i\log(\theta_i^0) + (1 - x_i)\log(1-\theta_i^0) \right] ) + (\log P(y = 1) - \log P(y = 0)) > 0 \\
+\implies (\sum_{i = 1}^{N} \left[ x_i(\log(\theta_i^1) - \log(1-\theta_i^1)) + \log(1-\theta_i^1) \right] - \sum_{i = 1}^{N} \left[ x_i(\log(\theta_i^0) - \log(1-\theta_i^0)) + \log(1-\theta_i^0) \right] ) + (\log P(y = 1) - \log P(y = 0)) > 0 \\
+\implies (\sum_{i = 1}^{N} \left[ x_i(\log(\theta_i^1) - \log(\theta_i^0) - \log(1-\theta_i^1) + \log(1-\theta_i^0)) + \log(1-\theta_i^1) - \log(1-\theta_i^0) \right] + (\log P(y = 1) - \log P(y = 0)) > 0 \\
+\implies (\sum_{i = 1}^{N} \left[ x_i(\log(\frac{\theta_i^1(1-\theta_i^0)}{\theta_i^0(1-\theta_i^1)})) + \log(1-\theta_i^1) - \log(1-\theta_i^0) \right] + (\log P(y = 1) - \log P(y = 0)) > 0 \\
+\implies \sum_{i = 1}^{N} \left[ x_i(\log(\frac{\theta_i^1(1-\theta_i^0)}{\theta_i^0(1-\theta_i^1)})) \right] + (\log P(y = 1) - \log P(y = 0) + \sum_{i = 1}^{N} \left[ \log(1-\theta_i^1) - \log(1-\theta_i^0) \right] ) > 0 \\
+\implies \log(\frac{\theta^1(1-\theta^0)}{\theta^0(1-\theta^1)})^T x + (\log P(y = 1) - \log P(y = 0) + \sum_{i = 1}^{N} \left[ \log(1-\theta_i^1) - \log(1-\theta_i^0) \right] ) > 0 \\
 \implies w^Tx + b > 0$
 
 As we can see from the above equations, the decision to classify a data point x as class 1 holds if $w^Tx + b > 0$ for some w and b.
 
-Specifically, $w = (\log(\theta^1) - \log(\theta^0))$ and $b = (\log P(y = 1) - \log P(y = 0))$. $\qquad\qed$
+Specifically, we get:
+
+$w = \log(\frac{\theta^1(1-\theta^0)}{\theta^0(1-\theta^1)}) \qquad$ (all operations are element-wise) 
+
+$b = (\log P(y = 1) - \log P(y = 0) + \sum_{i = 1}^{N} \left[ \log(1-\theta_i^1) - \log(1-\theta_i^0) \right] )$. $\qquad\qed$

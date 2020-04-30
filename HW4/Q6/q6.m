@@ -14,10 +14,11 @@ paperjam = array([10 1 5], condp(rand(2, 2, 2)));
 
 % use EM algorithm to learn all CPTs of the network
 pot = {fuse, drum, toner, paper, roller, burning, quality, wrinkled, multpages, paperjam};
-[newpot, loglik] = EMbeliefnet(pot, x, {});
+pars.maxiterations = 10000;
+[newpot, loglik] = EMbeliefnet(pot, x, pars);
 
 % inference part of Q6
-joint = multpots(newpot);
+joint = condpot(multpots(newpot));
 summedOut = sumpot(joint, [1 3 4 5 9 10]);
-drumUnitProbs = condp(squeeze(summedOut.table(:, 1, 1, 1)));
+drumUnitProbs = condp(squeeze(summedOut.table(:, 1, 2, 1)));
 fprintf("Prob. of drum unit problem: %.4f\n", drumUnitProbs(2));
