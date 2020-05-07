@@ -14,7 +14,7 @@ paperjam = array([10 1 5], condp(rand(2, 2, 2)));
 
 % use EM algorithm to learn all CPTs of the network
 pot = {fuse, drum, toner, paper, roller, burning, quality, wrinkled, multpages, paperjam};
-pars.maxiterations = 10000;
+pars.maxiterations = 1000;
 [newpot, loglik] = EMbeliefnet(pot, x, pars);
 
 % inference part of Q6
